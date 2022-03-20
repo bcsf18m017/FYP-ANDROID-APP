@@ -2,8 +2,11 @@ package com.example.fyp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -18,6 +21,7 @@ public class MainPage extends AppCompatActivity {
 
     ImageView menu,wallet;
     EditText searchbar;
+    DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +33,14 @@ public class MainPage extends AppCompatActivity {
         wallet=toolbar.findViewById(R.id.toolbar_wallet);
         menu=toolbar.findViewById(R.id.toolbar_menu);
         searchbar=findViewById(R.id.searcbar);
+        drawerLayout=findViewById(R.id.drawer_layout);
+
 
         menu.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("WrongConstant")
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainPage.this,"MENU",Toast.LENGTH_SHORT).show();
+                drawerLayout.openDrawer(Gravity.START);
             }
         });
         wallet.setOnClickListener(new View.OnClickListener() {
