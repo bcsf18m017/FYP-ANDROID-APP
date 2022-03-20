@@ -23,6 +23,7 @@
                 android:layout_marginTop="150dp"
                 android:layout_marginBottom="250dp"
                 android:text="INSTALLMENT"
+                android:textStyle="bold|italic"
                 android:textColor="@color/white"
                 android:textSize="50dp" />
 
@@ -33,6 +34,7 @@
                 android:layout_alignTop="@id/splash_installment"
                 android:layout_marginTop="80dp"
                 android:text="Business"
+                android:textStyle="bold|italic"
                 android:textColor="@color/white"
                 android:layout_marginStart="35dp"
                 android:textSize="35dp" />
@@ -43,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:text="Automation"
                 android:textColor="@color/white"
+                android:textStyle="bold|italic"
                 android:layout_marginStart="150dp"
                 android:layout_alignLeft="@id/splash_business"
                 android:layout_alignTop="@id/splash_installment"

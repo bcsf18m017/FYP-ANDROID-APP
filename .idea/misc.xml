@@ -3,9 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/button_shape.xml" value="0.2203125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/edittext_background.xml" value="0.2203125" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/gradient.xml" value="0.2203125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/searchbar_background.xml" value="0.1125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_main_page.xml" value="0.11730072463768115" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_main_page.xml" value="0.22" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/invalid_credentials_dialog.xml" value="0.25" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/toolbar.xml" value="0.33" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
