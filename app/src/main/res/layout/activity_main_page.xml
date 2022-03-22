@@ -8,34 +8,34 @@
     android:id="@+id/drawer_layout">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:id="@+id/main_page_rl_1">
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar"/>
+        <LinearLayout
+            android:id="@+id/main_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/main_page_rl_1"
+            android:orientation="horizontal"
+            android:layout_above="@id/bottom_nav_bar"/>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/orange"
-            android:layout_below="@id/toolbar">
-            <EditText
-                android:id="@+id/searcbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:padding="12dp"
-                android:background="@drawable/searchbar_background"
-                android:drawableLeft="@drawable/ic_baseline_search_24"
-                android:hint="  Search"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
-                android:imeOptions="actionSearch"
-                android:inputType="text"
-                android:maxLines="1"
-
-                />
-        </RelativeLayout>
+            android:padding="5dp"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/bottom_nav_menu"
+            app:itemTextColor="@color/white"
+            app:itemTextAppearanceActive="@color/black"
+            app:itemIconTint="@color/white"
+            app:itemTextAppearanceInactive="@color/black" />
     </RelativeLayout>
+
+
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
@@ -45,6 +45,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         android:id="@+id/side_nav_drawer" />
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
