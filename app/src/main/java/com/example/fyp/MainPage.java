@@ -1,5 +1,6 @@
 package com.example.fyp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -9,6 +10,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -17,11 +20,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 public class MainPage extends AppCompatActivity {
 
     ImageView menu,wallet;
     EditText searchbar;
     DrawerLayout drawerLayout;
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +40,7 @@ public class MainPage extends AppCompatActivity {
         menu=toolbar.findViewById(R.id.toolbar_menu);
         searchbar=findViewById(R.id.searcbar);
         drawerLayout=findViewById(R.id.drawer_layout);
+        navigationView=findViewById(R.id.side_nav_drawer);
 
 
         menu.setOnClickListener(new View.OnClickListener() {
@@ -58,5 +65,22 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.terms:
+                        Toast.makeText(MainPage.this, "TERMS", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.help:
+                        Toast.makeText(MainPage.this, "HELP", Toast.LENGTH_SHORT).show();
+                        return true;
+                }
+                return false;
+            }
+        });
+
     }
+
 }
