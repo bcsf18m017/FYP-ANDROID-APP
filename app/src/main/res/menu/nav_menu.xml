@@ -3,15 +3,15 @@
 
 
 
-
     <item
         android:id="@+id/terms"
         android:title="Terms and Conditions"
         android:icon="@drawable/ic_baseline_search_24"
+
         />
     <item
         android:id="@+id/help"
         android:title="Help"
-        android:icon="@drawable/ic_baseline_account_balance_wallet_24"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
         />
 </menu>

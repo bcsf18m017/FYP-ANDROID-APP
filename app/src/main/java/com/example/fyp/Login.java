@@ -2,6 +2,7 @@ package com.example.fyp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +13,15 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.fyp.Entities.User;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import io.paperdb.Paper;
 
 public class Login extends AppCompatActivity {
 
@@ -29,6 +39,8 @@ public class Login extends AppCompatActivity {
         phone=findViewById(R.id.login_phone);
         password=findViewById(R.id.login_password);
 
+        Paper.init(this);
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,8 +56,22 @@ public class Login extends AppCompatActivity {
                 }
                 else if(phoneText.equals("123")&& pwdText.equals("123"))
                 {
+                    String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                    @SuppressLint("SimpleDateFormat") SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd");
+                    Date date1= null;
+                    try {
+                        date1 = f.parse(date);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    User u=new User("1","NOMAN TAHIR","H#7,St#15 Ramgarh Main Bazaar Mughalpura Lahore","03024677533","3520126349331",R.drawable.user,130000.0,"123",date1,"NOMI");
+                    User.user=u;
+                    Paper.book().write("phone","03024677533");
+                    Paper.book().write("password","123");
                     Intent intent=new Intent(Login.this,MainPage.class);
+                    intent.putExtra("Caller","Home");
                     startActivity(intent);
+                    finish();
                 }
                 else
                 {

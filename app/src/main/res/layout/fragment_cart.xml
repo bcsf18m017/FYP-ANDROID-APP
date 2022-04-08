@@ -3,15 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CartFragment">
+    tools:context=".Fragments.CartFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Cart Will Be Shown Here"
-        android:textSize="50dp"
-        android:textAlignment="center"
-        android:layout_gravity="center" />
+        android:id="@+id/cartDisplayView"
+        android:background="@color/white"
+        />
 
 </FrameLayout>

@@ -12,7 +12,7 @@
     <item
         android:id="@+id/bottom_cart"
         android:title="Cart"
-        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:icon="@drawable/cart"
         />
     <item
         android:id="@+id/bottom_phone"
@@ -20,9 +20,9 @@
         android:icon="@drawable/ic_baseline_local_phone_24"
         />
     <item
-        android:id="@+id/bottom_order"
-        android:title="Orders"
-        android:icon="@drawable/ic_baseline_radio_button_unchecked_24"
+        android:id="@+id/bottom_search"
+        android:title="Search"
+        android:icon="@drawable/ic_baseline_search_24"
         />
     <item
         android:id="@+id/bottom_profile"

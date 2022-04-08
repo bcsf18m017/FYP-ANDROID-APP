@@ -13,25 +13,25 @@
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar"/>
+
         <LinearLayout
             android:id="@+id/main_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/bottom_nav_bar"
             android:layout_below="@id/toolbar"
-            android:orientation="horizontal"
-            android:layout_above="@id/bottom_nav_bar"/>
+            android:orientation="horizontal" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/orange"
             android:padding="5dp"
             android:layout_alignParentBottom="true"
             app:menu="@menu/bottom_nav_menu"
-            app:itemTextColor="@color/white"
+            app:itemTextColor="#414141"
             app:itemTextAppearanceActive="@color/black"
-            app:itemIconTint="@color/white"
+            app:itemIconTint="#414141"
             app:itemTextAppearanceInactive="@color/black" />
     </RelativeLayout>
 
@@ -43,8 +43,13 @@
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu"
         android:layout_gravity="start"
+        android:background="@color/white"
         android:fitsSystemWindows="true"
-        android:id="@+id/side_nav_drawer" />
+        android:id="@+id/side_nav_drawer"
+        app:itemTextColor="@color/black"
+        app:itemIconSize="36dp"
+        app:itemIconTint="@color/black"
+        app:itemVerticalPadding="20dp" />
 
 
 
