@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
@@ -35,6 +37,13 @@ public class MainPage extends AppCompatActivity {
     NavigationView navigationView;
     BottomNavigationView bottomNavigationView;
     Toolbar toolbar;
+    FragmentManager fm=getSupportFragmentManager();
+    final Fragment home=new HomeFragment();
+    final Fragment profile=new ProfileFragment();
+     Fragment cart=new CartFragment();
+    final Fragment search=new SearchFragment();
+    Fragment active=home;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -90,6 +99,12 @@ public class MainPage extends AppCompatActivity {
         imageView.setImageResource(R.drawable.noman);
 
 
+        fm.beginTransaction().add(R.id.main_linear_layout,search,"search").hide(search).commit();
+        fm.beginTransaction().add(R.id.main_linear_layout,cart,"cart").hide(cart).commit();
+        fm.beginTransaction().add(R.id.main_linear_layout,profile,"profile").hide(profile).commit();
+        fm.beginTransaction().add(R.id.main_linear_layout,home,"home").commit();
+
+
         try {
             String caller=getIntent().getStringExtra("Caller").toString();
             if(caller.equals("Cart"))
@@ -117,10 +132,10 @@ public class MainPage extends AppCompatActivity {
     private boolean sideBarItemListenerHandler(MenuItem item){
         switch (item.getItemId())
         {
-            case R.id.terms:
-                Toast.makeText(MainPage.this, "TERMS", Toast.LENGTH_SHORT).show();
+            case R.id.team:
+                startActivity(new Intent(MainPage.this,TeamInfo.class));
                 return true;
-            case R.id.help:
+            case R.id.orders:
                 Toast.makeText(MainPage.this, "HELP", Toast.LENGTH_SHORT).show();
                 return true;
         }
@@ -153,36 +168,22 @@ public class MainPage extends AppCompatActivity {
 
     private void loadCartFragment()
     {
-        ((TextView)toolbar.findViewById(R.id.toolbarHeading)).setText("Cart");
-        CartFragment cart=new CartFragment();
-        FragmentTransaction transaction1 =getSupportFragmentManager().beginTransaction();
-        transaction1.replace(R.id.main_linear_layout, cart);
-        transaction1.commit();
+        fm.beginTransaction().hide(active).show(cart).commit();
+        active=cart;
     }
     private void loadHomeFragment()
     {
-        ((TextView)toolbar.findViewById(R.id.toolbarHeading)).setText("Home");
-        HomeFragment home=new HomeFragment();
-        FragmentTransaction transaction =getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.main_linear_layout, home);
-        transaction.commit();
+        fm.beginTransaction().hide(active).show(home).commit();
+        active=home;
     }
     private void loadSearchFragment()
     {
-        ((TextView)toolbar.findViewById(R.id.toolbarHeading)).setText("Search");
-        SearchFragment searchFragment=new SearchFragment();
-        FragmentTransaction transaction2=getSupportFragmentManager().beginTransaction();
-        transaction2.replace(R.id.main_linear_layout,searchFragment);
-        transaction2.commit();
+        fm.beginTransaction().hide(active).show(search).commit();
+        active=search;
     }
     private void loadProfileFragment()
     {
-        ((TextView)toolbar.findViewById(R.id.toolbarHeading)).setText("Profile");
-        ProfileFragment profileFragment=new ProfileFragment();
-        FragmentTransaction transaction2=getSupportFragmentManager().beginTransaction();
-        transaction2.replace(R.id.main_linear_layout,profileFragment);
-        transaction2.commit();
+        fm.beginTransaction().hide(active).show(profile).commit();
+        active=profile;
     }
-
-
 }

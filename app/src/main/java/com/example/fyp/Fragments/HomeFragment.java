@@ -8,13 +8,17 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.fyp.Adapters.PageAdapter;
 import com.example.fyp.Adapters.ProductAdapter;
 import com.example.fyp.Entities.Product;
 import com.example.fyp.ProductDetails;
@@ -32,15 +36,13 @@ public class HomeFragment extends Fragment {
 
 
     TabLayout tabLayout;
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
-    List<Product> productList = new ArrayList<>();
+    public  static String[]categories={"category1","category2","category3"};
+    ViewPager pager;
     public HomeFragment() {
         // Required empty public constructor
     }
 
-
+ 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,8 +52,11 @@ public class HomeFragment extends Fragment {
 
         View view=inflater.inflate(R.layout.fragment_home, container, false);
         tabLayout=view.findViewById(R.id.tabLayout);
+        pager=view.findViewById(R.id.viewpager);
 
         addTabs();
+
+
 
 
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
@@ -62,12 +67,12 @@ public class HomeFragment extends Fragment {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Product p=new Product("123","Product1","description","category2", R.drawable.user,"NOMAN",20,20,true,true,date1);
+        Product p=new Product("123","Product1","description","category1", R.drawable.user,"NOMAN",20,20,true,true,date1);
         Product p1=new Product("234","Product2","description","category1", R.drawable.cross,"NOMAN",30,20,true,true,date1);
         Product p2=new Product("456","Product3","description","category1", R.drawable.logo,"NOMAN",40,20,true,true,date1);
-        Product p3=new Product("789","Product4","description","category2", R.drawable.splashimage,"NOMAN",50,20,true,true,date1);
+        Product p3=new Product("789","Product4","description","category1", R.drawable.splashimage,"NOMAN",50,20,true,true,date1);
         Product p4=new Product("101","Product5","description","category3", R.drawable.ic_baseline_supervised_user_circle_24,"NOMAN",60,20,true,true,date1);
-        Product p5=new Product("102","Product6","description","category2", R.drawable.ie,"NOMAN",60,20,true,true,date1);
+        Product p5=new Product("102","Product6","description","category1", R.drawable.ie,"NOMAN",60,20,true,true,date1);
         Product p6=new Product("103","Product7","description","category1", R.drawable.ie,"NOMAN",60,20,true,true,date1);
         Product p7=new Product("104","Product8","description","category3",R.drawable.addproductimage,"NOMAN",60,20,true,true,date1);
 
@@ -80,28 +85,13 @@ public class HomeFragment extends Fragment {
         Product.productList.add(p6);
         Product.productList.add(p7);
 
-        productList=new ArrayList<>(Product.productList);
-
-        recyclerView=view.findViewById(R.id.productDisplayView);
-        recyclerView.setHasFixedSize(true);
-        layoutManager=new LinearLayoutManager(view.getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        adapter=new ProductAdapter(view.getContext(), productList, new ProductAdapter.ItemClickListener() {
-            @Override
-            public void onItemClick(Product product) {
-                Intent intent =new Intent(getContext(), ProductDetails.class);
-                intent.putExtra("Details", product);
-                intent.putExtra("Caller","Home");
-                startActivity(intent);
-                ((Activity)getContext()).finish();
-            }
-        });
-        recyclerView.setAdapter(adapter);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        PageAdapter pageAdapter=new PageAdapter(getActivity().getSupportFragmentManager(),tabLayout.getTabCount());
+        pager.setAdapter(pageAdapter);
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                    tabListener(tab);
+                pager.setCurrentItem(tab.getPosition());
+                pageAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -114,33 +104,19 @@ public class HomeFragment extends Fragment {
 
             }
         });
+        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
         return view;
     }
 
     private void addTabs()
     {
-        tabLayout.addTab(tabLayout.newTab().setText("all"));
-        tabLayout.addTab(tabLayout.newTab().setText("category1"));
-        tabLayout.addTab(tabLayout.newTab().setText("category2"));
-        tabLayout.addTab(tabLayout.newTab().setText("category3"));
-        tabLayout.addTab(tabLayout.newTab().setText("category4"));
+
+        for(int i=0;i<categories.length;i++)
+        {
+            tabLayout.addTab(tabLayout.newTab().setText(categories[i]));
+        }
         tabLayout.setTabMode(MODE_SCROLLABLE );
     }
-    @SuppressLint("NotifyDataSetChanged")
-    private void tabListener(TabLayout.Tab tab)
-    {
-        tabLayout.selectTab(tab);
-        productList.clear();
-        for (Product p:Product.productList) {
-            if(p.getCategory().equals(tab.getText()) || tab.getPosition()==0)
-            {
-                productList.add(p);
-            }
-        }
-        adapter.notifyDataSetChanged();
-        recyclerView.scheduleLayoutAnimation();
-    }
-
-
 
 }

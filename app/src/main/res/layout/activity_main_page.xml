@@ -29,9 +29,10 @@
             android:padding="5dp"
             android:layout_alignParentBottom="true"
             app:menu="@menu/bottom_nav_menu"
-            app:itemTextColor="#414141"
-            app:itemTextAppearanceActive="@color/black"
-            app:itemIconTint="#414141"
+            app:itemTextColor="@color/orange"
+            app:itemTextAppearanceActive="@color/orange"
+            app:itemIconTint="@color/black"
+            
             app:itemTextAppearanceInactive="@color/black" />
     </RelativeLayout>
 

@@ -3,29 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.HomeFragment"
     android:background="@drawable/white">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:id="@+id/main_page_rl_2">
 
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="#f6f6f6"
+            app:tabSelectedTextColor="@color/orange"
+            app:tabIndicatorColor="@color/orange"/>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/productDisplayView"
-            android:layout_below="@id/tabLayout"
-            android:background="@color/white"
-            android:layoutAnimation="@anim/layout_animation"
-            />
+            android:layout_below="@id/tabLayout" />
     </RelativeLayout>
 
 

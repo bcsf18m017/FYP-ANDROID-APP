@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.fyp.DB.CartDB;
+import com.example.fyp.Dialogs.AddOrRemoveDialog;
 import com.example.fyp.Entities.Cart;
 import com.example.fyp.Entities.Product;
 import com.example.fyp.Fragments.CartFragment;
@@ -59,6 +60,8 @@ public class ProductDetails extends AppCompatActivity {
                 {
                     db.addToCart(cartItem);
                 }
+                AddOrRemoveDialog addOrRemoveDialog =new AddOrRemoveDialog();
+                addOrRemoveDialog.showDialog(view.getContext(),"Item added to cart",R.drawable.done);
                 Cart.populateList(db.getAllItems());
                 Intent intent=new Intent(ProductDetails.this,MainPage.class);
                 intent.putExtra("Caller",caller);

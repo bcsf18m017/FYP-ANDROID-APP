@@ -6,8 +6,8 @@
 
 
 
-    <solid android:color="#191919" />
-    <stroke android:width="1dip" android:color="#fda43c" />
+    <solid android:color="#2f2f2f" />
+    <stroke android:width="1dip" android:color="@color/orange" />
     <corners
         android:bottomRightRadius="10dp"
         android:bottomLeftRadius="10dp"

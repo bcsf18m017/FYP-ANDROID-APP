@@ -19,7 +19,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fyp.DB.CartDB;
-import com.example.fyp.DialogView;
+import com.example.fyp.Dialogs.AddOrRemoveDialog;
 import com.example.fyp.Entities.Cart;
 import com.example.fyp.Entities.Product;
 import com.example.fyp.ProductDetails;
@@ -99,8 +99,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyCartHolder> 
                                     cartList.remove(position);
                                     Cart.deleteFromList(p.getProduct_ID());
                                     notifyDataSetChanged();
-                                    DialogView dialogView=new DialogView();
-                                    dialogView.showDialog(view.getContext(),"Item removed from cart",R.drawable.remove);
+                                    AddOrRemoveDialog addOrRemoveDialog =new AddOrRemoveDialog();
+                                    addOrRemoveDialog.showDialog(view.getContext(),"Item removed from cart",R.drawable.remove);
                                     dialog.cancel();
                                 }
                             });

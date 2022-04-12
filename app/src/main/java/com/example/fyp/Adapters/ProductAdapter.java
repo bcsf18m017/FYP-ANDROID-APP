@@ -13,10 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
-import com.example.fyp.DialogView;
+import com.example.fyp.Dialogs.AddOrRemoveDialog;
 import com.example.fyp.Entities.Cart;
 import com.example.fyp.DB.CartDB;
 import com.example.fyp.Entities.Product;
+import com.example.fyp.Fragments.CartFragment;
+import com.example.fyp.MainPage;
 import com.example.fyp.R;
 
 import java.util.List;
@@ -47,7 +49,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyProduc
     public void onBindViewHolder(@NonNull MyProductHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.data=productList.get(position);
         holder.name.setText(holder.data.getTitle());
-        holder.price.setText(Double.toString(holder.data.getPrice()));
+        holder.price.setText(Double.toString(holder.data.getPrice())+" RS");
         holder.image.setImageResource(holder.data.getImage_id());
 
 
@@ -55,19 +57,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyProduc
             @Override
             public void onClick(View view) {
                 CartDB db=new CartDB(view.getContext());
-                Cart cartItem=new Cart(productList.get(position).getProduct_ID(),Integer.parseInt(holder.counter.getNumber()),"Direct Payment");
+                Cart cartItem=new Cart(productList.get(position).getProduct_ID(),1,"Direct Payment");
                 if(db.isRecord(productList.get(position).getProduct_ID()))
                 {
-                    db.updateRecordById(productList.get(position).getProduct_ID(),Integer.parseInt(holder.counter.getNumber()));
+                    int count=db.getItemByID(productList.get(position).getProduct_ID()).getQuantity();
+                    db.updateRecordById(productList.get(position).getProduct_ID(),count+1);
                 }
                 else
                 {
                     db.addToCart(cartItem);
                 }
-
-                holder.counter.setNumber("1");
-                DialogView dialogView=new DialogView();
-                dialogView.showDialog(view.getContext(),"Item added to cart",R.drawable.done);
+                AddOrRemoveDialog addOrRemoveDialog =new AddOrRemoveDialog();
+                addOrRemoveDialog.showDialog(view.getContext(),"Item added to cart",R.drawable.done);
             }
         });
         holder.itemView.setOnClickListener(view -> {
@@ -90,14 +91,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyProduc
         ImageView image;
         Product data;
         Button addToCart;
-        ElegantNumberButton counter;
         public MyProductHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.productName);
             price=itemView.findViewById(R.id.productPrice);
             image=itemView.findViewById(R.id.productImage);
             addToCart=itemView.findViewById(R.id.addToCartMainPage);
-            counter=itemView.findViewById(R.id.counterMainPage);
 
         }
     }
