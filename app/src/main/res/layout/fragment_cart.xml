@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.CartFragment">
+    tools:context=".Fragments.CartFragment"
+    android:background="#f6f6f6">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/cartDisplayView"
-        android:background="@color/white"
+        android:background="#f6f6f6"
         />
 
 </FrameLayout>

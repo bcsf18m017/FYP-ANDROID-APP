@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -54,34 +56,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyCartHolder> 
         if(p!=null)
         {
             holder.name.setText(p.getTitle());
-            holder.quantity.setText(holder.data.getQuantity()+"x");
-            holder.price.setText(Double.toString(p.getPrice()));
-            holder.total.setText("Total:\t"+Double.toString(holder.data.getQuantity()*p.getPrice()));
+            holder.total.setText(Double.toString(holder.data.getQuantity()*p.getPrice()));
             holder.image.setImageResource(p.getImage_id());
-            ArrayList<String> options=new ArrayList<>();
-            options.add("") ;
-            options.add("Full Payment") ;
-            options.add("Installment") ;
-
-            SpinnerItemAdapter adapter=new SpinnerItemAdapter(myContext.getApplicationContext(),options);
-            holder.spinner.setAdapter(adapter);
-
-            holder.spinner.setSelection(0,false);
-            holder.spinner.setSelection(getSavedMethodIndex(p.getProduct_ID()));
-
-            holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    CartDB cartDb =new CartDB(view.getContext());
-                    cartDb.setPaymentMethod(p.getProduct_ID(),options.get(i));
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
-
+            CartDB db=new CartDB(myContext);
+            holder.quantity.setText(db.getItemByID(p.getProduct_ID()).getQuantity());
             holder.delete.setOnClickListener(new View.OnClickListener() {
                 @SuppressLint("NotifyDataSetChanged")
                 @Override
@@ -99,8 +77,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyCartHolder> 
                                     cartList.remove(position);
                                     Cart.deleteFromList(p.getProduct_ID());
                                     notifyDataSetChanged();
-                                    AddOrRemoveDialog addOrRemoveDialog =new AddOrRemoveDialog();
-                                    addOrRemoveDialog.showDialog(view.getContext(),"Item removed from cart",R.drawable.remove);
+                                    Toast toast=Toast.makeText(myContext,"Item Removed Successfully",Toast.LENGTH_SHORT);
+                                    toast.setGravity(Gravity.CENTER,0,0);
+                                    toast.show();
                                     dialog.cancel();
                                 }
                             });
@@ -117,14 +96,39 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyCartHolder> 
                 }
 
             });
-            holder.edit.setOnClickListener(new View.OnClickListener() {
+
+            holder.plus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent =new Intent(view.getContext(), ProductDetails.class);
-                    intent.putExtra("Details", p);
-                    intent.putExtra("Caller","Cart");
-                    myContext.startActivity(intent);
-                    ((Activity)myContext).finish();
+                    int qty=Integer.parseInt(holder.quantity.getText().toString());
+                    if(qty+1<101)
+                    {
+                        holder.quantity.setText(qty+1);
+                        qty++;
+                        holder.total.setText((int) (qty*p.getPrice()));
+                        db.updateRecordById(p.getProduct_ID(),qty);
+                    }
+                    else
+                    {
+                        Toast.makeText(view.getContext(), "Maximum Limit reached",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+            holder.plus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int qty=Integer.parseInt(holder.quantity.getText().toString());
+                    if(qty-1>0)
+                    {
+                        holder.quantity.setText(qty-1);
+                        qty--;
+                        holder.total.setText((int) (qty*p.getPrice()));
+                        db.updateRecordById(p.getProduct_ID(),qty);
+                    }
+                    else
+                    {
+                        Toast.makeText(view.getContext(), "Minimum Limit Reached",Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
@@ -144,24 +148,25 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyCartHolder> 
     }
 
     public class MyCartHolder extends RecyclerView.ViewHolder {
-        TextView name,price,quantity,total;
+        TextView name,total,quantity;
         ImageView image,delete;
-        Button edit;
         Cart data;
-        Spinner spinner;
+        Button plus,minus;
         public MyCartHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.productNameCart);
-            quantity=itemView.findViewById(R.id.productQuantityCart);
-            price=itemView.findViewById(R.id.productPriceCart);
             total=itemView.findViewById(R.id.productTotalCart);
 
             image=itemView.findViewById(R.id.productImageCart);
 
             delete=itemView.findViewById(R.id.delButtonCart);
-            edit=itemView.findViewById(R.id.editButtonCart);
+            plus=itemView.findViewById(R.id.plusButton);
+            plus.setBackgroundDrawable(null);
 
-            spinner=itemView.findViewById(R.id.paymentMethodSpinner);
+            minus=itemView.findViewById(R.id.minusButton);
+            minus.setBackground(null);
+            quantity=itemView.findViewById(R.id.cartQuantity);
+
 
         }
     }

@@ -3,43 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/button_shape.xml" value="0.2203125" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/button_shape_inverted.xml" value="0.2203125" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/cardbackground.xml" value="0.2203125" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/edittext_background.xml" value="0.2203125" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/gradient.xml" value="0.2203125" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.2203125" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2203125" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/ic_baseline_local_phone_24.xml" value="0.2169230769230769" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/password_background.xml" value="0.2203125" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/relative_layout.xml" value="0.2203125" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/searchbar_background.xml" value="0.1125" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_main_page.xml" value="0.22" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_product_details.xml" value="0.43636363636363634" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_search_result.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_team_info.xml" value="0.21" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/cart_item_layout.xml" value="0.33" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/dialog_layout.xml" value="0.21" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/fragment_cart.xml" value="0.19010416666666666" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/fragment_categories.xml" value="0.10552536231884058" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/fragment_home.xml" value="0.19972826086956522" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/fragment_profile.xml" value="0.292259083728278" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/fragment_search.xml" value="0.18" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/invalid_credentials_dialog.xml" value="0.25" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/item_layout.xml" value="0.25" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/layout_anim.xml" value="0.10552536231884058" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/name_change_dialog.xml" value="0.25" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/nav_header.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/password_change_dialog.xml" value="0.33" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/pd.xml" value="0.25" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/spinner_layout.xml" value="0.25" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/team_dialog.xml" value="0.25" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/toolbar.xml" value="0.33" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/menu/nav_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/drawable/button_shape.xml" value="0.23" />
+        <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/drawable/delete_icon_shape.xml" value="0.23" />
+        <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/drawable/linear_layout_round.xml" value="0.1815" />
+        <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/drawable/round_button.xml" value="0.23" />
+        <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/layout/activity_main_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/layout/cart_item_layout.xml" value="0.4230430958663149" />
+        <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/layout/fragment_cart.xml" value="0.25416666666666665" />
+        <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/layout/fragment_categories.xml" value="0.25416666666666665" />
+        <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

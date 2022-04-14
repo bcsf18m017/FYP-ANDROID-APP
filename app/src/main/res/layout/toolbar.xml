@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/orange"
@@ -14,6 +15,7 @@
            android:layout_height="30dp"
            android:layout_centerVertical="true"
            android:src="@drawable/ic_baseline_menu_24"
+           android:tint="@color/black"
            />
 
        <TextView
@@ -23,9 +25,9 @@
            android:layout_centerVertical="true"
            android:layout_marginStart="20dp"
            android:layout_toRightOf="@id/toolbar_menu"
-           android:text="Home"
+           android:text="Iqbal Electronics"
            android:textColor="@color/black"
-           android:textSize="20dp"
+           android:textSize="22dp"
            android:fontFamily="@font/average_sans"
            />
 
@@ -36,8 +38,9 @@
            android:layout_alignParentEnd="true"
            android:layout_centerVertical="true"
            android:layout_marginRight="10dp"
+           android:src="@drawable/ic_baseline_exit_to_app_24"
            android:tooltipText="Logout"
-           android:src="@drawable/ic_baseline_exit_to_app_24" />
+           app:tint="@color/black" />
    </RelativeLayout>
 
 
