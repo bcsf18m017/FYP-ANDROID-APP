@@ -14,17 +14,17 @@ import com.example.fyp.R;
 
 public class PasswordDialog {
 
-    public void showDialog(Context activity){
+    public void showDialog(Context activity) {
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.password_change_dialog);
-        EditText old=dialog.findViewById(R.id.old_password);
-        EditText new1=dialog.findViewById(R.id.new_password1);
-        EditText new2=dialog.findViewById(R.id.new_password2);
+        EditText old = dialog.findViewById(R.id.old_password);
+        EditText new1 = dialog.findViewById(R.id.new_password1);
+        EditText new2 = dialog.findViewById(R.id.new_password2);
 
-        Button cancel=dialog.findViewById(R.id.password_cancel_button);
-        Button update=dialog.findViewById(R.id.password_update_button);
+        Button cancel = dialog.findViewById(R.id.password_cancel_button);
+        Button update = dialog.findViewById(R.id.password_update_button);
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override

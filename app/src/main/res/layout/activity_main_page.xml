@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainPage"
     android:id="@+id/drawer_layout">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,11 +33,9 @@
             app:menu="@menu/bottom_nav_menu"
             app:itemTextColor="@color/orange"
             app:itemTextAppearanceActive="@color/orange"
-            app:itemIconTint="@color/black"
-            
+            app:itemIconTint="@color/bottom_nav_color"
             app:itemTextAppearanceInactive="@color/black" />
     </RelativeLayout>
-
 
 
     <com.google.android.material.navigation.NavigationView
@@ -52,7 +51,6 @@
         app:itemIconSize="36dp"
         app:itemIconTint="@color/black"
         app:itemVerticalPadding="20dp" />
-
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

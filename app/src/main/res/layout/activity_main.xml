@@ -22,8 +22,7 @@
                 android:layout_marginStart="-50dp"
                 android:layout_marginTop="250dp"
                 android:src="@drawable/ie_main"
-                android:id="@+id/splash_logo"
-                />
+                android:id="@+id/splash_logo" />
 
         </RelativeLayout>
     </ScrollView>
@@ -31,51 +30,51 @@
 </RelativeLayout>
 
 
-<!--<de.hdodenhof.circleimageview.CircleImageView-->
-<!--android:layout_width="150dp"-->
-<!--android:layout_height="150dp"-->
-<!--android:src="@drawable/ie" />-->
+    <!--<de.hdodenhof.circleimageview.CircleImageView-->
+    <!--android:layout_width="150dp"-->
+    <!--android:layout_height="150dp"-->
+    <!--android:src="@drawable/ie" />-->
 
-<!--<TextView-->
-<!--android:id="@+id/splash_installment"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:layout_centerHorizontal="true"-->
-<!--android:layout_marginTop="150dp"-->
-<!--android:layout_marginBottom="250dp"-->
-<!--android:text="INSTALLMENT"-->
-<!--android:textStyle="bold|italic"-->
-<!--android:textColor="@color/white"-->
-<!--android:textSize="50dp" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/splash_installment"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="150dp"-->
+    <!--android:layout_marginBottom="250dp"-->
+    <!--android:text="INSTALLMENT"-->
+    <!--android:textStyle="bold|italic"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:textSize="50dp" />-->
 
-<!--<TextView-->
-<!--android:id="@+id/splash_business"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:layout_alignTop="@id/splash_installment"-->
-<!--android:layout_marginTop="80dp"-->
-<!--android:text="Business"-->
-<!--android:textStyle="bold|italic"-->
-<!--android:textColor="@color/white"-->
-<!--android:layout_marginStart="35dp"-->
-<!--android:textSize="35dp" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/splash_business"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignTop="@id/splash_installment"-->
+    <!--android:layout_marginTop="80dp"-->
+    <!--android:text="Business"-->
+    <!--android:textStyle="bold|italic"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:layout_marginStart="35dp"-->
+    <!--android:textSize="35dp" />-->
 
-<!--<TextView-->
-<!--android:id="@+id/splash_automation"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:text="Automation"-->
-<!--android:textColor="@color/white"-->
-<!--android:textStyle="bold|italic"-->
-<!--android:layout_marginStart="150dp"-->
-<!--android:layout_alignLeft="@id/splash_business"-->
-<!--android:layout_alignTop="@id/splash_installment"-->
-<!--android:layout_marginTop="80dp"-->
-<!--android:textSize="35dp"-->
-<!--    />-->
-<!--<ImageView-->
-<!--android:layout_width="match_parent"-->
-<!--android:layout_height="300dp"-->
-<!--android:src="@drawable/splashimage"-->
-<!--android:layout_alignTop="@id/splash_business"-->
-<!--android:layout_marginTop="200dp"/>-->
+    <!--<TextView-->
+    <!--android:id="@+id/splash_automation"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Automation"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:textStyle="bold|italic"-->
+    <!--android:layout_marginStart="150dp"-->
+    <!--android:layout_alignLeft="@id/splash_business"-->
+    <!--android:layout_alignTop="@id/splash_installment"-->
+    <!--android:layout_marginTop="80dp"-->
+    <!--android:textSize="35dp"-->
+    <!--    />-->
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="300dp"-->
+    <!--android:src="@drawable/splashimage"-->
+    <!--android:layout_alignTop="@id/splash_business"-->
+    <!--android:layout_marginTop="200dp"/>-->

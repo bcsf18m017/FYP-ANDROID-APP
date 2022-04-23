@@ -3,14 +3,14 @@ package com.example.fyp.Entities;
 import java.util.Date;
 
 public class User {
-    String id,name,address,phone,cnic,password,createdBy;
+    String id, name, address, phone, cnic, password, createdBy;
     Double salary;
     int image_id;
     Date createdOn;
 
     public static User user;
 
-    public User(String id, String name, String address, String phone, String cnic, int image_id, Double salary,String password, Date createdOn, String createdBy) {
+    public User(String id, String name, String address, String phone, String cnic, int image_id, Double salary, String password, Date createdOn, String createdBy) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -20,7 +20,7 @@ public class User {
         this.salary = salary;
         this.createdOn = createdOn;
         this.createdBy = createdBy;
-        this.password=password;
+        this.password = password;
     }
 
     public String getId() {

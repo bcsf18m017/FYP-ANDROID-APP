@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:background="#f6f6f6"
             app:tabSelectedTextColor="@color/orange"
-            app:tabIndicatorColor="@color/orange"/>
+            app:tabIndicatorColor="@color/orange" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager"
@@ -27,7 +27,6 @@
             android:layout_height="match_parent"
             android:layout_below="@id/tabLayout" />
     </RelativeLayout>
-
 
 
 </FrameLayout>

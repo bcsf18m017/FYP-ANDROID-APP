@@ -8,17 +8,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
-import com.example.fyp.Dialogs.AddOrRemoveDialog;
 import com.example.fyp.Entities.Cart;
 import com.example.fyp.DB.CartDB;
 import com.example.fyp.Entities.Product;
-import com.example.fyp.Fragments.CartFragment;
-import com.example.fyp.MainPage;
 import com.example.fyp.R;
 
 import java.util.List;
@@ -32,8 +29,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyProduc
 
     public ProductAdapter(Context context, List<Product> productList, ItemClickListener itemClickListener) {
         this.productList = productList;
-        this.myContext=context;
-        this.myClickListener=itemClickListener;
+        this.myContext = context;
+        this.myClickListener = itemClickListener;
     }
 
 
@@ -47,28 +44,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyProduc
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyProductHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.data=productList.get(position);
+        holder.data = productList.get(position);
         holder.name.setText(holder.data.getTitle());
-        holder.price.setText(Double.toString(holder.data.getPrice())+" RS");
+        holder.price.setText(Double.toString(holder.data.getPrice()) + " RS");
         holder.image.setImageResource(holder.data.getImage_id());
 
 
         holder.addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CartDB db=new CartDB(view.getContext());
-                Cart cartItem=new Cart(productList.get(position).getProduct_ID(),1,"Direct Payment");
-                if(db.isRecord(productList.get(position).getProduct_ID()))
-                {
-                    int count=db.getItemByID(productList.get(position).getProduct_ID()).getQuantity();
-                    db.updateRecordById(productList.get(position).getProduct_ID(),count+1);
-                }
-                else
-                {
+                CartDB db = new CartDB(view.getContext());
+                Cart cartItem = new Cart(productList.get(position).getProduct_ID(), 1, "Direct Payment");
+                if (db.isRecord(productList.get(position).getProduct_ID())) {
+                    int count = db.getItemByID(productList.get(position).getProduct_ID()).getQuantity();
+                    db.updateRecordById(productList.get(position).getProduct_ID(), count + 1);
+                } else {
                     db.addToCart(cartItem);
                 }
-                AddOrRemoveDialog addOrRemoveDialog =new AddOrRemoveDialog();
-                addOrRemoveDialog.showDialog(view.getContext(),"Item added to cart",R.drawable.done);
+                Toast.makeText(myContext, "Item Added To Cart", Toast.LENGTH_SHORT).show();
             }
         });
         holder.itemView.setOnClickListener(view -> {
@@ -81,22 +74,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyProduc
         return productList.size();
     }
 
-    public interface ItemClickListener{
+    public interface ItemClickListener {
         void onItemClick(Product product);
     }
-    public class MyProductHolder extends RecyclerView.ViewHolder
-    {
 
-        TextView name,price;
+    public class MyProductHolder extends RecyclerView.ViewHolder {
+
+        TextView name, price;
         ImageView image;
         Product data;
         Button addToCart;
+
         public MyProductHolder(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.productName);
-            price=itemView.findViewById(R.id.productPrice);
-            image=itemView.findViewById(R.id.productImage);
-            addToCart=itemView.findViewById(R.id.addToCartMainPage);
+            name = itemView.findViewById(R.id.productName);
+            price = itemView.findViewById(R.id.productPrice);
+            image = itemView.findViewById(R.id.productImage);
+            addToCart = itemView.findViewById(R.id.addToCartMainPage);
 
         }
     }

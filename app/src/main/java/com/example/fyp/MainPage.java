@@ -32,32 +32,33 @@ import io.paperdb.Paper;
 
 public class MainPage extends AppCompatActivity {
 
-    ImageView menu,logout;
+    ImageView menu, logout;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     BottomNavigationView bottomNavigationView;
     Toolbar toolbar;
-    FragmentManager fm=getSupportFragmentManager();
-    final Fragment home=new HomeFragment();
-    final Fragment profile=new ProfileFragment();
-     Fragment cart=new CartFragment();
-    final Fragment search=new SearchFragment();
-    Fragment active=home;
+    FragmentManager fm = getSupportFragmentManager();
+    final Fragment home = new HomeFragment();
+    final Fragment profile = new ProfileFragment();
+    Fragment cart = new CartFragment();
+    final Fragment search = new SearchFragment();
+    Fragment active = home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         setContentView(R.layout.activity_main_page);
 
-        toolbar=findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        logout=toolbar.findViewById(R.id.toolbar_logout);
-        menu=toolbar.findViewById(R.id.toolbar_menu);
-        drawerLayout=findViewById(R.id.drawer_layout);
-        navigationView=findViewById(R.id.side_nav_drawer);
-        bottomNavigationView=findViewById(R.id.bottom_nav_bar);
+        logout = toolbar.findViewById(R.id.toolbar_logout);
+        menu = toolbar.findViewById(R.id.toolbar_menu);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.side_nav_drawer);
+        bottomNavigationView = findViewById(R.id.bottom_nav_bar);
 
         Paper.init(this);
 
@@ -72,7 +73,7 @@ public class MainPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Paper.book().destroy();
-                Intent intent=new Intent(MainPage.this,Login.class);
+                Intent intent = new Intent(MainPage.this, Login.class);
                 startActivity(intent);
                 finish();
             }
@@ -82,58 +83,60 @@ public class MainPage extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-               return sideBarItemListenerHandler(item);
+                return sideBarItemListenerHandler(item);
             }
         });
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-               return bottomNavItemListenerHandler(item);
+                return bottomNavItemListenerHandler(item);
             }
         });
 
-        View header=navigationView.getHeaderView(0);
-        TextView text=header.findViewById(R.id.nav_user_name);
+        View header = navigationView.getHeaderView(0);
+        TextView text = header.findViewById(R.id.nav_user_name);
         text.setText(User.user.getName());
-        ImageView imageView=header.findViewById(R.id.nav_profile_image);
+        ImageView imageView = header.findViewById(R.id.nav_profile_image);
         imageView.setImageResource(R.drawable.noman);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(profile);
+                drawerLayout.closeDrawer(Gravity.LEFT);
+                bottomNavigationView.setSelectedItemId(R.id.bottom_profile);
+
+            }
+        });
 
 
-        fm.beginTransaction().add(R.id.main_linear_layout,search,"search").hide(search).commit();
-        fm.beginTransaction().add(R.id.main_linear_layout,cart,"cart").hide(cart).commit();
-        fm.beginTransaction().add(R.id.main_linear_layout,profile,"profile").hide(profile).commit();
-        fm.beginTransaction().add(R.id.main_linear_layout,home,"home").commit();
+        fm.beginTransaction().add(R.id.main_linear_layout, search, "search").hide(search).commit();
+        fm.beginTransaction().add(R.id.main_linear_layout, cart, "cart").hide(cart).commit();
+        fm.beginTransaction().add(R.id.main_linear_layout, profile, "profile").hide(profile).commit();
+        fm.beginTransaction().add(R.id.main_linear_layout, home, "home").commit();
 
 
         try {
-            String caller=getIntent().getStringExtra("Caller").toString();
-            if(caller.equals("Cart"))
-            {
+            String caller = getIntent().getStringExtra("Caller").toString();
+            if (caller.equals("Cart")) {
                 bottomNavigationView.setSelectedItemId(R.id.bottom_cart);
-                loadCartFragment();
-            }
-            else if(caller.equals("Home"))
-            {
+                loadFragment(cart);
+            } else if (caller.equals("Home")) {
                 bottomNavigationView.setSelectedItemId(R.id.bottom_home);
-                loadHomeFragment();
-            }
-            else if(caller.equals("Search"))
-            {
+                loadFragment(home);
+            } else if (caller.equals("Search")) {
                 bottomNavigationView.setSelectedItemId(R.id.bottom_search);
-                loadSearchFragment();
+                loadFragment(search);
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
     }
 
-    private boolean sideBarItemListenerHandler(MenuItem item){
-        switch (item.getItemId())
-        {
+    private boolean sideBarItemListenerHandler(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.team:
-                startActivity(new Intent(MainPage.this,TeamInfo.class));
+                startActivity(new Intent(MainPage.this, TeamInfo.class));
+                drawerLayout.closeDrawer(Gravity.LEFT);
                 return true;
             case R.id.orders:
                 Toast.makeText(MainPage.this, "HELP", Toast.LENGTH_SHORT).show();
@@ -141,49 +144,34 @@ public class MainPage extends AppCompatActivity {
         }
         return false;
     }
+
     @SuppressLint("NonConstantResourceId")
-    private boolean bottomNavItemListenerHandler(MenuItem item){
-        switch (item.getItemId())
-        {
+    private boolean bottomNavItemListenerHandler(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.bottom_home:
-               loadHomeFragment();
+                loadFragment(home);
                 return true;
             case R.id.bottom_cart:
-                loadCartFragment();
+                loadFragment(cart);
                 return true;
             case R.id.bottom_phone:
                 String phone = "03024677533";
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
                 startActivity(intent);
             case R.id.bottom_search:
-                loadSearchFragment();
+                loadFragment(search);
                 return true;
             case R.id.bottom_profile:
-                loadProfileFragment();
+                loadFragment(profile);
                 return true;
         }
-        return false;
+        return true;
     }
 
 
-    private void loadCartFragment()
+    private void loadFragment(Fragment fragment)
     {
-        fm.beginTransaction().hide(active).show(cart).commit();
-        active=cart;
-    }
-    private void loadHomeFragment()
-    {
-        fm.beginTransaction().hide(active).show(home).commit();
-        active=home;
-    }
-    private void loadSearchFragment()
-    {
-        fm.beginTransaction().hide(active).show(search).commit();
-        active=search;
-    }
-    private void loadProfileFragment()
-    {
-        fm.beginTransaction().hide(active).show(profile).commit();
-        active=profile;
+        fm.beginTransaction().hide(active).show(fragment).commit();
+        active=fragment;
     }
 }

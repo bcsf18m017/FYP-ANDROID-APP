@@ -28,20 +28,21 @@ public class CartFragment extends Fragment {
     public CartFragment() {
         // Required empty public constructor
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_cart, container, false);
+        View view = inflater.inflate(R.layout.fragment_cart, container, false);
 
-        CartDB cartDb =new CartDB(getContext());
+        CartDB cartDb = new CartDB(getContext());
         Cart.populateList(cartDb.getAllItems());
 
-        recyclerView=view.findViewById(R.id.cartDisplayView);
+        recyclerView = view.findViewById(R.id.cartDisplayView);
         recyclerView.setHasFixedSize(true);
-        layoutManager=new LinearLayoutManager(view.getContext());
+        layoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
-        adapter=new CartAdapter(getContext(),Cart.cartList);
+        adapter = new CartAdapter(getContext(), Cart.cartList);
         recyclerView.setAdapter(adapter);
         return view;
     }
@@ -49,21 +50,19 @@ public class CartFragment extends Fragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if(!hidden)
-        {
+        if (!hidden) {
             cartLoader();
         }
     }
 
-    private void cartLoader()
-    {
-        CartDB cartDb =new CartDB(getContext());
+    private void cartLoader() {
+        CartDB cartDb = new CartDB(getContext());
         Cart.populateList(cartDb.getAllItems());
-        recyclerView= getActivity().findViewById(R.id.cartDisplayView);
+        recyclerView = getActivity().findViewById(R.id.cartDisplayView);
         recyclerView.setHasFixedSize(true);
-        layoutManager=new LinearLayoutManager(getActivity());
+        layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        adapter=new CartAdapter(getContext(),Cart.cartList);
+        adapter = new CartAdapter(getContext(), Cart.cartList);
         recyclerView.setAdapter(adapter);
     }
 

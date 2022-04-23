@@ -36,13 +36,14 @@ public class HomeFragment extends Fragment {
 
 
     TabLayout tabLayout;
-    public  static String[]categories={"category1","category2","category3"};
+    public static String[] categories = {"category1", "category2", "category3"};
     ViewPager pager;
+
     public HomeFragment() {
         // Required empty public constructor
     }
 
- 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,31 +51,29 @@ public class HomeFragment extends Fragment {
 
         // Inflate the layout for this fragment
 
-        View view=inflater.inflate(R.layout.fragment_home, container, false);
-        tabLayout=view.findViewById(R.id.tabLayout);
-        pager=view.findViewById(R.id.viewpager);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        tabLayout = view.findViewById(R.id.tabLayout);
+        pager = view.findViewById(R.id.viewpager);
 
         addTabs();
 
 
-
-
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd");
-        Date date1= null;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = null;
         try {
             date1 = f.parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Product p=new Product("123","Product1","description","category1", R.drawable.user,"NOMAN",20,20,true,true,date1);
-        Product p1=new Product("234","Product2","description","category1", R.drawable.cross,"NOMAN",30,20,true,true,date1);
-        Product p2=new Product("456","Product3","description","category1", R.drawable.logo,"NOMAN",40,20,true,true,date1);
-        Product p3=new Product("789","Product4","description","category1", R.drawable.splashimage,"NOMAN",50,20,true,true,date1);
-        Product p4=new Product("101","Product5","description","category3", R.drawable.ic_baseline_supervised_user_circle_24,"NOMAN",60,20,true,true,date1);
-        Product p5=new Product("102","Product6","description","category1", R.drawable.ie,"NOMAN",60,20,true,true,date1);
-        Product p6=new Product("103","Product7","description","category1", R.drawable.ie,"NOMAN",60,20,true,true,date1);
-        Product p7=new Product("104","Product8","description","category3",R.drawable.addproductimage,"NOMAN",60,20,true,true,date1);
+        Product p = new Product("123", "Product1", "description", "category1", R.drawable.user, "NOMAN", 20, 20, true, true, date1);
+        Product p1 = new Product("234", "Product2", "description", "category1", R.drawable.lcd, "NOMAN", 30, 20, true, true, date1);
+        Product p2 = new Product("456", "Product3", "description", "category1", R.drawable.logo, "NOMAN", 40, 20, true, true, date1);
+        Product p3 = new Product("789", "Product4", "description", "category1", R.drawable.splashimage, "NOMAN", 50, 20, true, true, date1);
+        Product p4 = new Product("101", "Product5", "description", "category3", R.drawable.ic_baseline_supervised_user_circle_24, "NOMAN", 60, 20, true, true, date1);
+        Product p5 = new Product("102", "Product6", "description", "category1", R.drawable.ie, "NOMAN", 60, 20, true, true, date1);
+        Product p6 = new Product("103", "Product7", "description", "category1", R.drawable.ie, "NOMAN", 60, 20, true, true, date1);
+        Product p7 = new Product("104", "Product8", "description", "category3", R.drawable.addproductimage, "NOMAN", 60, 20, true, true, date1);
 
         Product.productList.add(p);
         Product.productList.add(p1);
@@ -85,7 +84,7 @@ public class HomeFragment extends Fragment {
         Product.productList.add(p6);
         Product.productList.add(p7);
 
-        PageAdapter pageAdapter=new PageAdapter(getActivity().getSupportFragmentManager(),tabLayout.getTabCount());
+        PageAdapter pageAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
         pager.setAdapter(pageAdapter);
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -109,14 +108,12 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    private void addTabs()
-    {
+    private void addTabs() {
 
-        for(int i=0;i<categories.length;i++)
-        {
+        for (int i = 0; i < categories.length; i++) {
             tabLayout.addTab(tabLayout.newTab().setText(categories[i]));
         }
-        tabLayout.setTabMode(MODE_SCROLLABLE );
+        tabLayout.setTabMode(MODE_SCROLLABLE);
     }
 
 }

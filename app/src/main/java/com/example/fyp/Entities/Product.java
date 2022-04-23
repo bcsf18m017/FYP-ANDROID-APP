@@ -7,15 +7,15 @@ import java.util.List;
 
 @SuppressWarnings("serial")
 public class Product implements Serializable {
-    String product_ID,title,description,createdBy,category;
-    double price,percentage;
-    boolean daily,monthly;
+    String product_ID, title, description, createdBy, category;
+    double price, percentage;
+    boolean daily, monthly;
     int image_id;
     Date createdOn;
 
-    public static List<Product>productList;
+    public static List<Product> productList;
 
-    public Product(String product_ID, String title, String description,String category, int image_id, String createdBy, double price, double percentage, boolean daily, boolean monthly, Date createdOn) {
+    public Product(String product_ID, String title, String description, String category, int image_id, String createdBy, double price, double percentage, boolean daily, boolean monthly, Date createdOn) {
         this.product_ID = product_ID;
         this.title = title;
         this.description = description;
@@ -26,8 +26,8 @@ public class Product implements Serializable {
         this.daily = daily;
         this.monthly = monthly;
         this.createdOn = createdOn;
-        this.category=category;
-        productList= new ArrayList<>();
+        this.category = category;
+        productList = new ArrayList<>();
     }
 
     public String getProduct_ID() {
@@ -49,6 +49,7 @@ public class Product implements Serializable {
     public String getCreatedBy() {
         return createdBy;
     }
+
     public String getCategory() {
         return category;
     }
@@ -112,16 +113,15 @@ public class Product implements Serializable {
     public void setCreatedOn(Date createdOn) {
         this.createdOn = createdOn;
     }
+
     public void setCategory(String category) {
-        this.category=category;
+        this.category = category;
     }
 
 
-    public static Product getProductByID(String id)
-    {
-        for (Product p:productList) {
-            if(p.product_ID.equals(id))
-            {
+    public static Product getProductByID(String id) {
+        for (Product p : productList) {
+            if (p.product_ID.equals(id)) {
                 return p;
             }
         }

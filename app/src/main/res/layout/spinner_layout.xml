@@ -9,8 +9,8 @@
         android:id="@+id/spinnerText"
         android:text="Category Name"
         android:layout_marginLeft="10dp"
+        android:padding="5dp"
         android:textSize="20sp"
         android:layout_gravity="center"
-        android:textColor="@color/black"
-        />
+        android:textColor="@color/black" />
 </LinearLayout>

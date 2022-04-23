@@ -14,6 +14,20 @@
         <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/layout/fragment_categories.xml" value="0.25416666666666665" />
         <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/bottom_nav_color.xml" value="0.2203125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/delete_icon_shape.xml" value="0.2203125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/image_shape.xml" value="0.2203125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/password_background.xml" value="0.2203125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_login.xml" value="0.18297101449275363" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_main_page.xml" value="0.18" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_product_details.xml" value="0.15" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/cart_item_layout.xml" value="0.33" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/dialog_layout.xml" value="0.1" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/fragment_categories.xml" value="0.1" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/fragment_profile.xml" value="0.4083333333333333" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/item_layout.xml" value="0.39261418853255586" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/password_change_dialog.xml" value="0.33" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/spinner_layout.xml" value="0.33" />
       </map>
     </option>
   </component>

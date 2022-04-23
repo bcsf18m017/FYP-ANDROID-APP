@@ -31,7 +31,8 @@ public class SearchFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    List<Product> productList=new ArrayList<>();
+    List<Product> productList = new ArrayList<>();
+
     public SearchFragment() {
         // Required empty public constructor
     }
@@ -41,8 +42,8 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_search, container, false);
-        searchbar=view.findViewById(R.id.searcBar);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        searchbar = view.findViewById(R.id.searcBar);
 
 
         searchbar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -52,16 +53,16 @@ public class SearchFragment extends Fragment {
             }
         });
 
-        recyclerView=view.findViewById(R.id.productDisplayViewSearch);
+        recyclerView = view.findViewById(R.id.productDisplayViewSearch);
         recyclerView.setHasFixedSize(true);
-        layoutManager=new LinearLayoutManager(view.getContext());
+        layoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
-        adapter=new ProductAdapter(view.getContext(),productList, new ProductAdapter.ItemClickListener() {
+        adapter = new ProductAdapter(view.getContext(), productList, new ProductAdapter.ItemClickListener() {
             @Override
             public void onItemClick(Product product) {
-                Intent intent =new Intent(getContext(), ProductDetails.class);
+                Intent intent = new Intent(getContext(), ProductDetails.class);
                 intent.putExtra("Details", product);
-                intent.putExtra("Caller","Search");
+                intent.putExtra("Caller", "Search");
                 startActivity(intent);
             }
         });
@@ -72,9 +73,8 @@ public class SearchFragment extends Fragment {
     @SuppressLint("NotifyDataSetChanged")
     private boolean handleSearch(String text) {
         productList.clear();
-        for (Product p:Product.productList) {
-            if(p.getTitle().toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT))||p.getCategory().toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT)))
-            {
+        for (Product p : Product.productList) {
+            if (p.getTitle().toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT)) || p.getCategory().toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT))) {
                 productList.add(p);
             }
         }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class SpinnerItemAdapter extends BaseAdapter {
     Context context;
-    ArrayList<String>optionNames;
+    ArrayList<String> optionNames;
 
     public SpinnerItemAdapter(Context context, ArrayList<String> categoryNames) {
         this.context = context;
@@ -41,8 +41,8 @@ public class SpinnerItemAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        convertView= LayoutInflater.from(context).inflate(R.layout.spinner_layout,parent,false);
-        TextView txt=convertView.findViewById(R.id.spinnerText);
+        convertView = LayoutInflater.from(context).inflate(R.layout.spinner_layout, parent, false);
+        TextView txt = convertView.findViewById(R.id.spinnerText);
         txt.setText(optionNames.get(position));
 
         return convertView;

@@ -13,9 +13,9 @@ import com.example.fyp.Fragments.HomeFragment;
 public class PageAdapter extends FragmentPagerAdapter {
     int tabCount;
 
-    public PageAdapter(@NonNull FragmentManager fm,int count) {
+    public PageAdapter(@NonNull FragmentManager fm, int count) {
         super(fm);
-        tabCount=count;
+        tabCount = count;
     }
 
     @NonNull
