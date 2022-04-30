@@ -48,7 +48,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyCartHolder> 
         if (p != null) {
             holder.name.setText(p.getTitle());
             holder.total.setText(Double.toString(holder.data.getQuantity() * p.getPrice()));
-            holder.image.setImageResource(p.getImage_id());
+            holder.image.setImageBitmap(p.getImage_id());
             CartDB db = new CartDB(myContext);
             holder.quantity.setText(Integer.toString(db.getItemByID(p.getProduct_ID()).getQuantity()));
             holder.delete.setOnClickListener(new View.OnClickListener() {

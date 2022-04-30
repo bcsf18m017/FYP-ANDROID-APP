@@ -1,5 +1,7 @@
 package com.example.fyp.Entities;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,16 +12,16 @@ public class Product implements Serializable {
     String product_ID, title, description, createdBy, category;
     double price, percentage;
     boolean daily, monthly;
-    int image_id;
+    transient Bitmap image;
     Date createdOn;
 
     public static List<Product> productList;
 
-    public Product(String product_ID, String title, String description, String category, int image_id, String createdBy, double price, double percentage, boolean daily, boolean monthly, Date createdOn) {
+    public Product(String product_ID, String title, String description, String category, Bitmap image, String createdBy, double price, double percentage, boolean daily, boolean monthly, Date createdOn) {
         this.product_ID = product_ID;
         this.title = title;
         this.description = description;
-        this.image_id = image_id;
+        this.image = image;
         this.createdBy = createdBy;
         this.price = price;
         this.percentage = percentage;
@@ -42,8 +44,8 @@ public class Product implements Serializable {
         return description;
     }
 
-    public int getImage_id() {
-        return image_id;
+    public Bitmap getImage_id() {
+        return image;
     }
 
     public String getCreatedBy() {
@@ -86,8 +88,8 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public void setImage_id(int image_id) {
-        this.image_id = image_id;
+    public void setImage_id(Bitmap image_id) {
+        this.image = image_id;
     }
 
     public void setCreatedBy(String createdBy) {

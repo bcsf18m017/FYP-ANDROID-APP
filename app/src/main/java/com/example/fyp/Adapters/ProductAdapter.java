@@ -18,9 +18,10 @@ import com.example.fyp.DB.CartDB;
 import com.example.fyp.Entities.Product;
 import com.example.fyp.R;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyProductHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyProductHolder>{
 
 
     List<Product> productList;
@@ -47,7 +48,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyProduc
         holder.data = productList.get(position);
         holder.name.setText(holder.data.getTitle());
         holder.price.setText(Double.toString(holder.data.getPrice()) + " RS");
-        holder.image.setImageResource(holder.data.getImage_id());
+        holder.image.setImageBitmap(holder.data.getImage_id());
 
 
         holder.addToCart.setOnClickListener(new View.OnClickListener() {

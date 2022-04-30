@@ -3,12 +3,14 @@ package com.example.fyp.Fragments;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +21,12 @@ import com.example.fyp.ProductDetails;
 import com.example.fyp.R;
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoriesFragment extends Fragment {
+public class CategoriesFragment extends Fragment implements Serializable {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -54,9 +58,14 @@ public class CategoriesFragment extends Fragment {
         adapter = new ProductAdapter(view.getContext(), list, new ProductAdapter.ItemClickListener() {
             @Override
             public void onItemClick(Product product) {
+                Bitmap image = product.getImage_id();
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
                 Intent intent = new Intent(getContext(), ProductDetails.class);
-                intent.putExtra("Details", product);
+                intent.putExtra("Details",product);
                 intent.putExtra("Caller", "Home");
+                intent.putExtra("image",byteArray);
                 startActivity(intent);
                 ((Activity) getContext()).finish();
             }

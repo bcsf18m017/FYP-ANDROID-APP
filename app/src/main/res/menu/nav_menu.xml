@@ -9,6 +9,11 @@
         android:icon="@drawable/order"
         />
     <item
+        android:id="@+id/transactions"
+        android:title="Transactions"
+        android:icon="@drawable/order"
+        />
+    <item
         android:id="@+id/team"
         android:title="About Us"
         android:icon="@drawable/about"

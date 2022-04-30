@@ -28,9 +28,11 @@ import com.example.fyp.Fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.Serializable;
+
 import io.paperdb.Paper;
 
-public class MainPage extends AppCompatActivity {
+public class MainPage extends AppCompatActivity implements Serializable {
 
     ImageView menu, logout;
     DrawerLayout drawerLayout;
@@ -43,6 +45,7 @@ public class MainPage extends AppCompatActivity {
     Fragment cart = new CartFragment();
     final Fragment search = new SearchFragment();
     Fragment active = home;
+    String current="home";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,9 +153,11 @@ public class MainPage extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.bottom_home:
                 loadFragment(home);
+                current="home";
                 return true;
             case R.id.bottom_cart:
                 loadFragment(cart);
+                current="cart";
                 return true;
             case R.id.bottom_phone:
                 String phone = "03024677533";
@@ -160,9 +165,11 @@ public class MainPage extends AppCompatActivity {
                 startActivity(intent);
             case R.id.bottom_search:
                 loadFragment(search);
+                current="search";
                 return true;
             case R.id.bottom_profile:
                 loadFragment(profile);
+                current="profile";
                 return true;
         }
         return true;
@@ -173,5 +180,19 @@ public class MainPage extends AppCompatActivity {
     {
         fm.beginTransaction().hide(active).show(fragment).commit();
         active=fragment;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(!current.equals("home"))
+        {
+            loadFragment(home);
+            current="home";
+            bottomNavigationView.setSelectedItemId(R.id.bottom_home);
+        }
+        else
+        {
+            super.onBackPressed();
+        }
     }
 }

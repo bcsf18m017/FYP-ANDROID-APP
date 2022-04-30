@@ -1,7 +1,9 @@
 package com.example.fyp.Fragments;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,6 +22,8 @@ import com.example.fyp.Entities.Product;
 import com.example.fyp.ProductDetails;
 import com.example.fyp.R;
 
+import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -60,10 +64,16 @@ public class SearchFragment extends Fragment {
         adapter = new ProductAdapter(view.getContext(), productList, new ProductAdapter.ItemClickListener() {
             @Override
             public void onItemClick(Product product) {
+                Bitmap image = product.getImage_id();
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
                 Intent intent = new Intent(getContext(), ProductDetails.class);
                 intent.putExtra("Details", product);
                 intent.putExtra("Caller", "Search");
+                intent.putExtra("image",byteArray);
                 startActivity(intent);
+                ((Activity) getContext()).finish();
             }
         });
         recyclerView.setAdapter(adapter);

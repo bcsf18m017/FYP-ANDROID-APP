@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +18,9 @@ import com.example.fyp.DB.CartDB;
 import com.example.fyp.Entities.Cart;
 import com.example.fyp.Entities.Product;
 
-public class ProductDetails extends AppCompatActivity {
+import java.io.Serializable;
+
+public class ProductDetails extends AppCompatActivity implements Serializable {
 
     ImageView productImage;
     ElegantNumberButton counter;
@@ -32,6 +36,9 @@ public class ProductDetails extends AppCompatActivity {
         setContentView(R.layout.activity_product_details);
         Product product = (Product) getIntent().getSerializableExtra("Details");
         caller = getIntent().getStringExtra("Caller").toString();
+        byte[] byteArray = getIntent().getByteArrayExtra("image");
+        Bitmap image = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        product.setImage_id(image);
 
         counter = findViewById(R.id.counter);
         name = findViewById(R.id.product_detail_name);
@@ -42,7 +49,7 @@ public class ProductDetails extends AppCompatActivity {
         category = findViewById(R.id.product_detail_category);
 
         name.setText(product.getTitle());
-        productImage.setImageResource(product.getImage_id());
+        productImage.setImageBitmap(product.getImage_id());
         description.setText(product.getDescription());
         price.setText(Double.toString(product.getPrice()));
         category.setText(product.getCategory());
