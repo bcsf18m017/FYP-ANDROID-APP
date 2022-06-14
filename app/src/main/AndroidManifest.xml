@@ -4,6 +4,8 @@
     package="com.example.fyp">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -14,6 +16,12 @@
         android:theme="@style/Theme.FYP"
         android:windowSoftInputMode="stateAlwaysHidden"
         tools:replace="android:theme">
+        <activity
+            android:name=".OrderDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Orders"
+            android:exported="false" />
         <activity
             android:name=".TeamInfo"
             android:exported="false" />
@@ -26,7 +34,7 @@
         <activity
             android:name=".MainPage"
             android:exported="true"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

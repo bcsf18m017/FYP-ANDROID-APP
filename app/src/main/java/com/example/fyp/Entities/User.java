@@ -1,8 +1,9 @@
 package com.example.fyp.Entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
     String id, name, address, phone, cnic, password, createdBy;
     Double salary;
     int image_id;

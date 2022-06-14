@@ -9,116 +9,196 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <ImageView
             android:id="@+id/product_detail_image"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:background="@drawable/image_background"
+            android:clipToOutline="true"
             android:scaleType="fitXY"
-            android:src="@drawable/lcd">
-        </ImageView>
+            android:src="@drawable/lcd" />
 
 
-        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:elevation="40dp"
             android:layout_below="@id/product_detail_image"
             app:cardBackgroundColor="@color/white"
-            android:id="@+id/product_details_card">
+            android:id="@+id/product_details_card"
+            android:layout_alignParentEnd="true"
+
+            >
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/product_detail_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="45dp"
-                    android:text="Adidas Shoes"
-                    android:textColor="@color/black"
-                    android:textSize="26dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/product_detail_category"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/product_detail_name"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Shoes"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/product_detail_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/product_detail_category"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="30dp"
-                    android:text="Product Description"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
-
-
-                <TextView
-                    android:id="@+id/product_detail_price"
+                <RelativeLayout
+                    android:id="@+id/product_detail_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/product_detail_description"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="800"
-                    android:textColor="@color/black"
-                    android:textSize="28dp" />
+                    android:background="@color/white">
 
-                <androidx.cardview.widget.CardView
+                    <TextView
+                        android:id="@+id/product_detail_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="45dp"
+                        android:text="Adidas Shoes"
+                        android:textColor="@color/black"
+                        android:textSize="26dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/product_detail_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/product_detail_price"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Shoes"
+                        android:textColor="#606060"
+                        android:textSize="18dp" />
+
+
+                    <TextView
+                        android:id="@+id/product_detail_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/product_detail_name"
+                        android:layout_marginStart="30dp"
+                        android:text="800"
+                        android:textColor="#606060"
+                        android:textSize="20dp" />
+
+                    <ScrollView
+                        android:id="@+id/SCROLLER"
+                        android:layout_width="fill_parent"
+                        android:layout_height="100dp"
+                        android:layout_below="@id/product_detail_category"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:fillViewport="true"
+                        android:scrollbars="vertical">
+
+                        <TextView
+                            android:id="@+id/product_detail_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/product_detail_minimum_installment"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="15dp"
+                            android:scrollbars="vertical"
+                            android:text="Product Description"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                    </ScrollView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/product_detail_rl1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/product_detail_price"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="50dp"
-                    app:cardBackgroundColor="@color/orange"
-                    app:cardCornerRadius="10dp">
+                    android:layout_below="@id/product_detail_rl"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:paddingVertical="8dp">
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#d0d0d0"
+                        android:layout_marginHorizontal="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Daily"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
 
-                    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
-                        android:id="@+id/counter"
-                        android:layout_width="150dp"
-                        android:layout_height="60dp"
-                        android:layout_below="@id/product_detail_description"
-                        android:layout_marginTop="10dp"
-                        android:elevation="10dp"
-                        app:backGroundColor="@color/orange"
-                        app:finalNumber="10"
-                        app:initialNumber="1"
-                        app:textColor="@color/black"
-                        app:textSize="8dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Monthly"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/product_detail_daily"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="500"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/product_detail_monthly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="5000"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#d0d0d0"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_below="@id/product_detail_monthly"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/product_detail_rl1"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white"
+                    android:padding="5dp"
+                    >
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/add_to_cart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_gravity="right"
-                        android:layout_marginVertical="8dp"
-                        android:layout_marginEnd="5dp"
-                        android:background="@drawable/button_shape_inverted"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/button_shape"
                         android:drawableStart="@drawable/cart"
-                        android:padding="10dp"
-                        android:paddingHorizontal="5dp"
+                        android:drawableTint="@color/black"
+                        android:paddingHorizontal="25dp"
                         android:text="Add To Cart"
                         android:textColor="@color/black"
                         android:textSize="17dp" />
-                </androidx.cardview.widget.CardView>
+                </RelativeLayout>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 

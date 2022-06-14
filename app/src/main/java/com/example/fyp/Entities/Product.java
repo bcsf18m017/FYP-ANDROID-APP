@@ -11,13 +11,15 @@ import java.util.List;
 public class Product implements Serializable {
     String product_ID, title, description, createdBy, category;
     double price, percentage;
-    boolean daily, monthly;
-    transient Bitmap image;
+    String image;
     Date createdOn;
+    boolean daily,monthly;
+    int minimumInstallments;
+    
 
     public static List<Product> productList;
 
-    public Product(String product_ID, String title, String description, String category, Bitmap image, String createdBy, double price, double percentage, boolean daily, boolean monthly, Date createdOn) {
+    public Product(String product_ID, String title, String description, String category, String image, String createdBy, double price, double percentage,int minimumInstallments,boolean daily,boolean monthly, Date createdOn) {
         this.product_ID = product_ID;
         this.title = title;
         this.description = description;
@@ -25,10 +27,11 @@ public class Product implements Serializable {
         this.createdBy = createdBy;
         this.price = price;
         this.percentage = percentage;
-        this.daily = daily;
-        this.monthly = monthly;
+        this.minimumInstallments=minimumInstallments;
         this.createdOn = createdOn;
         this.category = category;
+        this.daily=daily;
+        this.monthly=monthly;
         productList = new ArrayList<>();
     }
 
@@ -44,7 +47,7 @@ public class Product implements Serializable {
         return description;
     }
 
-    public Bitmap getImage_id() {
+    public String getImage_id() {
         return image;
     }
 
@@ -64,14 +67,6 @@ public class Product implements Serializable {
         return percentage;
     }
 
-    public boolean isDaily() {
-        return daily;
-    }
-
-    public boolean isMonthly() {
-        return monthly;
-    }
-
     public Date getCreatedOn() {
         return createdOn;
     }
@@ -88,7 +83,7 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public void setImage_id(Bitmap image_id) {
+    public void setImage_id(String image_id) {
         this.image = image_id;
     }
 
@@ -104,14 +99,6 @@ public class Product implements Serializable {
         this.percentage = percentage;
     }
 
-    public void setDaily(boolean daily) {
-        this.daily = daily;
-    }
-
-    public void setMonthly(boolean monthly) {
-        this.monthly = monthly;
-    }
-
     public void setCreatedOn(Date createdOn) {
         this.createdOn = createdOn;
     }
@@ -120,6 +107,45 @@ public class Product implements Serializable {
         this.category = category;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public int getMinimumInstallments() {
+        return minimumInstallments;
+    }
+
+    public void setMinimumInstallments(int minimumInstallments) {
+        this.minimumInstallments = minimumInstallments;
+    }
+
+    public static List<Product> getProductList() {
+        return productList;
+    }
+
+    public static void setProductList(List<Product> productList) {
+        Product.productList = productList;
+    }
+
+    public boolean isDaily() {
+        return daily;
+    }
+
+    public void setDaily(boolean daily) {
+        this.daily = daily;
+    }
+
+    public boolean isMonthly() {
+        return monthly;
+    }
+
+    public void setMonthly(boolean monthly) {
+        this.monthly = monthly;
+    }
 
     public static Product getProductByID(String id) {
         for (Product p : productList) {

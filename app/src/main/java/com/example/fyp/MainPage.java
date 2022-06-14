@@ -142,7 +142,7 @@ public class MainPage extends AppCompatActivity implements Serializable {
                 drawerLayout.closeDrawer(Gravity.LEFT);
                 return true;
             case R.id.orders:
-                Toast.makeText(MainPage.this, "HELP", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainPage.this,Orders.class));
                 return true;
         }
         return false;

@@ -13,9 +13,11 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.example.fyp.Dialogs.PasswordDialog;
+import com.example.fyp.Entities.User;
 import com.example.fyp.R;
 
 public class ProfileFragment extends Fragment {
@@ -23,6 +25,7 @@ public class ProfileFragment extends Fragment {
     Button changePasswrod,changeProfile,cancel;
     RelativeLayout r1,r2;
     Animation up,down;
+    EditText name,phone,address;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -41,6 +44,14 @@ public class ProfileFragment extends Fragment {
         cancel=view.findViewById(R.id.profile_cancel_button);
         r1=view.findViewById(R.id.views_container);
         r2=view.findViewById(R.id.views_container2);
+
+        name=view.findViewById(R.id.name_change_field);
+        phone=view.findViewById(R.id.phone_change_field);
+        address=view.findViewById(R.id.address_change_field);
+
+        name.setText(User.user.getName());
+        phone.setText(User.user.getPhone());
+        address.setText(User.user.getAddress());
 
         up= AnimationUtils.loadAnimation(getContext(),R.anim.item_animation_rise_up);
         down= AnimationUtils.loadAnimation(getContext(),R.anim.item_animation_fall_down);

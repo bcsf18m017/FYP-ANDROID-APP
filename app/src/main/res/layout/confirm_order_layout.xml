@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_centerInParent="true"
+        android:elevation="30dp"
+        app:cardBackgroundColor="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/order_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Order Details"
+                android:textColor="@color/black"
+                android:textSize="27dp"
+
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="Daily"
+                android:textSize="20dp"
+                android:textColor="#808080"
+                android:layout_below="@id/order_title"
+                android:layout_marginTop="30dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/order_title"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="70dp"
+                android:text="Your Daily Installments Will be 2000"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:id="@+id/dailyHeading"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#606060"
+                android:layout_below="@id/dailyHeading"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="Monthly"
+                android:textSize="20dp"
+                android:textColor="#808080"
+                android:layout_below="@id/dailyHeading"
+                android:layout_marginTop="30dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dailyHeading"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="70dp"
+                android:text="Your Monthly Installments Will be 2000"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:id="@+id/monthlyHeading"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#606060"
+                android:layout_below="@id/monthlyHeading"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="15dp"/>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/order_cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_shape"
+                android:text="Cancel"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/place_order_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_shape"
+                android:padding="5dp"
+                android:text="Place Order"
+                android:textColor="@color/black" />
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

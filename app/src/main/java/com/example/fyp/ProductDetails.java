@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,13 +18,13 @@ import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.fyp.DB.CartDB;
 import com.example.fyp.Entities.Cart;
 import com.example.fyp.Entities.Product;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 
 public class ProductDetails extends AppCompatActivity implements Serializable {
 
     ImageView productImage;
-    ElegantNumberButton counter;
     TextView name, price, description, category;
     Button addToCart;
     String caller;
@@ -36,11 +37,8 @@ public class ProductDetails extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_product_details);
         Product product = (Product) getIntent().getSerializableExtra("Details");
         caller = getIntent().getStringExtra("Caller").toString();
-        byte[] byteArray = getIntent().getByteArrayExtra("image");
-        Bitmap image = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-        product.setImage_id(image);
+       
 
-        counter = findViewById(R.id.counter);
         name = findViewById(R.id.product_detail_name);
         productImage = findViewById(R.id.product_detail_image);
         description = findViewById(R.id.product_detail_description);
@@ -48,10 +46,11 @@ public class ProductDetails extends AppCompatActivity implements Serializable {
         addToCart = findViewById(R.id.add_to_cart);
         category = findViewById(R.id.product_detail_category);
 
+
         name.setText(product.getTitle());
-        productImage.setImageBitmap(product.getImage_id());
+        Picasso.get().load(product.getImage_id()).into(productImage);
         description.setText(product.getDescription());
-        price.setText(Double.toString(product.getPrice()));
+        price.setText(Double.toString(product.getPrice()+((product.getPercentage()*product.getPrice())/100)));
         category.setText(product.getCategory());
 
 
@@ -59,9 +58,9 @@ public class ProductDetails extends AppCompatActivity implements Serializable {
             @Override
             public void onClick(View view) {
                 CartDB db = new CartDB(view.getContext());
-                Cart cartItem = new Cart(product.getProduct_ID(), Integer.parseInt(counter.getNumber()), "Direct Payment");
+                Cart cartItem = new Cart(product.getProduct_ID(), 1, "Direct Payment");
                 if (db.isRecord(product.getProduct_ID())) {
-                    db.updateRecordById(product.getProduct_ID(), Integer.parseInt(counter.getNumber()));
+                    db.updateRecordById(product.getProduct_ID(), 1);
                 } else {
                     db.addToCart(cartItem);
                 }

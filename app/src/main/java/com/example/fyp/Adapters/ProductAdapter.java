@@ -17,6 +17,7 @@ import com.example.fyp.Entities.Cart;
 import com.example.fyp.DB.CartDB;
 import com.example.fyp.Entities.Product;
 import com.example.fyp.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.List;
@@ -47,8 +48,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyProduc
     public void onBindViewHolder(@NonNull MyProductHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.data = productList.get(position);
         holder.name.setText(holder.data.getTitle());
-        holder.price.setText(Double.toString(holder.data.getPrice()) + " RS");
-        holder.image.setImageBitmap(holder.data.getImage_id());
+        holder.price.setText(Double.toString((holder.data.getPrice()+(holder.data.getPercentage()*holder.data.getPrice())/100)) + " RS");
+        Picasso.get().load(holder.data.getImage_id()).into(holder.image);
 
 
         holder.addToCart.setOnClickListener(new View.OnClickListener() {

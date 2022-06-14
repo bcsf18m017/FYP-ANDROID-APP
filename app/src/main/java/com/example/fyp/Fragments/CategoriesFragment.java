@@ -58,14 +58,9 @@ public class CategoriesFragment extends Fragment implements Serializable {
         adapter = new ProductAdapter(view.getContext(), list, new ProductAdapter.ItemClickListener() {
             @Override
             public void onItemClick(Product product) {
-                Bitmap image = product.getImage_id();
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                image.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] byteArray = stream.toByteArray();
                 Intent intent = new Intent(getContext(), ProductDetails.class);
                 intent.putExtra("Details",product);
                 intent.putExtra("Caller", "Home");
-                intent.putExtra("image",byteArray);
                 startActivity(intent);
                 ((Activity) getContext()).finish();
             }

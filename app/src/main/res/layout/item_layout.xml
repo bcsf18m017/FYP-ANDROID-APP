@@ -41,12 +41,11 @@
                     android:id="@+id/productName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/average_sans"
                     android:text="Product Name"
                     android:textColor="@color/black"
-                    android:layout_marginTop="10dp"
-                    android:textSize="26sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView

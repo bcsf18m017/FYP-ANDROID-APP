@@ -64,12 +64,7 @@ public class HomeFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tabLayout);
         pager = view.findViewById(R.id.viewpager);
         addTabs();
-        try {
-            FetchImage fetchImage=new FetchImage("https://i.pinimg.com/736x/77/d4/15/77d41520a3f07995b184797a3734bf44.jpg");
-            fetchImage.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        createProducts();
         return view;
     }
 
@@ -83,14 +78,14 @@ public class HomeFragment extends Fragment {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Product p = new Product("123", "Product1", "description", "category1", myMap, "NOMAN", 20, 20, true, true, date1);
-        Product p1 = new Product("234", "Product2", "description", "category1", myMap, "NOMAN", 30, 20, true, true, date1);
-        Product p2 = new Product("456", "Product3", "description", "category1", myMap, "NOMAN", 40, 20, true, true, date1);
-        Product p3 = new Product("789", "Product4", "description", "category1", myMap, "NOMAN", 50, 20, true, true, date1);
-        Product p4 = new Product("101", "Product5", "description", "category3", myMap, "NOMAN", 60, 20, true, true, date1);
-        Product p5 = new Product("102", "Product6", "description", "category1", myMap, "NOMAN", 60, 20, true, true, date1);
-        Product p6 = new Product("103", "Product7", "description", "category1", myMap, "NOMAN", 60, 20, true, true, date1);
-        Product p7 = new Product("104", "Product8", "description", "category3", myMap, "NOMAN", 60, 20, true, true, date1);
+        Product p = new Product("123", "Product1product1", "dProduct1product1ProdProduct1product1ProdProduct1product1ProdProduct1product1ProdProduct1product1Product1product1escriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription", "category1", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 20000, 20, 5,true,false, date1);
+        Product p2 = new Product("456", "Product3", "description", "category1", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 40, 20, 5,true,true, date1);
+        Product p3 = new Product("789", "Product4", "description", "category1", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 50, 20, 5,true,true, date1);
+        Product p1 = new Product("234", "Product2", "description", "category1", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 30, 20, 5,false,true, date1);
+        Product p4 = new Product("101", "Product5", "description", "category3", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 60, 20, 5,true,false, date1);
+        Product p5 = new Product("102", "Product6", "description", "category1", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 60, 20, 5,true,false, date1);
+        Product p6 = new Product("103", "Product7", "description", "category1", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 60, 20, 5,true,false, date1);
+        Product p7 = new Product("104", "Product8", "description", "category3", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 60, 20, 5,true,false, date1);
 
         Product.productList.add(p);
         Product.productList.add(p1);
@@ -132,42 +127,5 @@ public class HomeFragment extends Fragment {
         tabLayout.setTabMode(MODE_SCROLLABLE);
     }
 
-    class FetchImage extends Thread{
-
-        String url;
-        Bitmap map;
-        public FetchImage(String url) throws IOException {
-            this.url=url;
-        }
-
-        @Override
-        public void run(){
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-
-                }
-            });
-
-            InputStream input= null;
-            try {
-                input = new java.net.URL(url).openStream();
-                myMap= BitmapFactory.decodeStream(input);
-                int i=0;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    myMap=myMap;
-                    createProducts();
-                }
-            });
-
-        }
-
-    }
 
 }
