@@ -24,9 +24,8 @@
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
-            android:src="@drawable/noman"
             app:civ_border_color="#f6f6f6"
-            app:civ_border_width="3dp"/>
+            app:civ_border_width="3dp" />
 
         <RelativeLayout
             android:id="@+id/views_container"
@@ -53,6 +52,9 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="40dp"
                 android:gravity="center"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/ic_baseline_supervised_user_circle_24"
+                android:drawableTint="@color/orange"
                 android:text="Noman Tahir"
                 android:textColor="@color/black"
                 android:textSize="23dp"
@@ -86,6 +88,7 @@
                 android:drawableLeft="@drawable/login_phone"
                 android:text="+923024677532"
                 android:textColor="@color/black"
+                android:drawablePadding="10dp"
                 android:drawableTint="@color/orange"
                 android:textSize="20dp"
                 android:textStyle="italic" />
@@ -121,6 +124,7 @@
                 android:text="3520126349331"
                 android:textColor="@color/black"
                 android:textSize="20dp"
+                android:drawablePadding="10dp"
                 android:textStyle="italic" />
 
             <View
@@ -140,6 +144,7 @@
                 android:text="Address"
                 android:textColor="#707070"
                 android:textSize="13dp" />
+
             <TextView
                 android:id="@+id/user_address_profle"
                 android:layout_width="match_parent"
@@ -147,10 +152,11 @@
                 android:layout_below="@id/user_cnic_profile"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="50dp"
-                android:drawableTint="@color/orange"
                 android:drawableLeft="@drawable/address"
+                android:drawableTint="@color/orange"
                 android:text="H#7,St#15,Ramgarh Main Bazaar Mughalpura,Lahore"
                 android:textColor="@color/black"
+                android:drawablePadding="10dp"
                 android:textSize="17dp"
                 android:textStyle="italic" />
 

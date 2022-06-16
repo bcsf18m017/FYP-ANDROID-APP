@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProductDetails"
-    android:background="@color/white">
+    android:background="@color/black">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,11 +26,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
-            android:elevation="40dp"
+            android:elevation="140dp"
             android:layout_below="@id/product_detail_image"
             app:cardBackgroundColor="@color/white"
+            android:layout_marginTop="20dp"
             android:id="@+id/product_details_card"
             android:layout_alignParentEnd="true"
+            android:background="@drawable/image_background"
+            app:cardCornerRadius="30dp"
 
             >
 
