@@ -4,4 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="About_Us">We are on a mission to boost the online businesses across Pakistan for better economic conditions. We have the identity and expertise of an established production team with our own ideas and commitments and the scope of what we are offering is constantly widening.</string>
     <string name="About_Us2">Our commitment for every project is always the same, weather small or big budget, our experience is is the base for either creative solutions or bring big ideas on every screen.</string>
+    <string name="Cloudinary">https://res.cloudinary.com/nomancloudinary/image/upload/</string>
+
 </resources>

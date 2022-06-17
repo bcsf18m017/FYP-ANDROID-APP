@@ -12,14 +12,13 @@ public class Product implements Serializable {
     String product_ID, title, description, createdBy, category;
     double price, percentage;
     String image;
-    Date createdOn;
     boolean daily,monthly;
     int minimumInstallments;
     
 
     public static List<Product> productList;
 
-    public Product(String product_ID, String title, String description, String category, String image, String createdBy, double price, double percentage,int minimumInstallments,boolean daily,boolean monthly, Date createdOn) {
+    public Product(String product_ID, String title, String description, String category, String image, String createdBy, double price, double percentage,int minimumInstallments,boolean daily,boolean monthly) {
         this.product_ID = product_ID;
         this.title = title;
         this.description = description;
@@ -28,11 +27,13 @@ public class Product implements Serializable {
         this.price = price;
         this.percentage = percentage;
         this.minimumInstallments=minimumInstallments;
-        this.createdOn = createdOn;
         this.category = category;
         this.daily=daily;
         this.monthly=monthly;
-        productList = new ArrayList<>();
+        if(productList==null)
+        {
+            productList = new ArrayList<>();
+        }
     }
 
     public String getProduct_ID() {
@@ -67,9 +68,6 @@ public class Product implements Serializable {
         return percentage;
     }
 
-    public Date getCreatedOn() {
-        return createdOn;
-    }
 
     public void setProduct_ID(String product_ID) {
         this.product_ID = product_ID;
@@ -99,9 +97,6 @@ public class Product implements Serializable {
         this.percentage = percentage;
     }
 
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
-    }
 
     public void setCategory(String category) {
         this.category = category;

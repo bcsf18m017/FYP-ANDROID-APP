@@ -1,9 +1,9 @@
 package com.example.fyp.Entities;
 
-public class Categories {
+public class Category {
     String id,description;
 
-    public Categories(String id, String description) {
+    public Category(String id, String description) {
         this.id = id;
         this.description = description;
     }

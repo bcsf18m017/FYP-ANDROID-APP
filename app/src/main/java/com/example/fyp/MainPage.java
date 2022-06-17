@@ -27,6 +27,7 @@ import com.example.fyp.Fragments.ProfileFragment;
 import com.example.fyp.Fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 
@@ -100,7 +101,7 @@ public class MainPage extends AppCompatActivity implements Serializable {
         TextView text = header.findViewById(R.id.nav_user_name);
         text.setText(User.user.getName());
         ImageView imageView = header.findViewById(R.id.nav_profile_image);
-        imageView.setImageResource(R.drawable.noman);
+        Picasso.get().load(User.user.getImage_id()).into(imageView);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

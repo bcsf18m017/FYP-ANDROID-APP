@@ -20,13 +20,28 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.fyp.Adapters.PageAdapter;
 import com.example.fyp.Adapters.ProductAdapter;
+import com.example.fyp.Entities.Category;
 import com.example.fyp.Entities.Product;
+import com.example.fyp.Entities.User;
+import com.example.fyp.MainActivity;
+import com.example.fyp.MainPage;
 import com.example.fyp.ProductDetails;
 import com.example.fyp.R;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,17 +52,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
+
+import io.paperdb.Paper;
 
 public class HomeFragment extends Fragment {
 
 
     TabLayout tabLayout;
-    public static String[] categories = {"category1", "category2", "category3"};
+    public static List<String>categories;
     ViewPager pager;
-    Handler handler=new Handler();
-    ArrayList<Bitmap> maps=new ArrayList<Bitmap>();
-    Bitmap myMap;
-    
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -57,77 +72,120 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         tabLayout = view.findViewById(R.id.tabLayout);
         pager = view.findViewById(R.id.viewpager);
-        addTabs();
-        createProducts();
+        loadCategories();
         return view;
     }
 
+    //GET PRODUCTS FROM SERVER
     private void createProducts()
     {
-        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = null;
-        try {
-            date1 = f.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Product p = new Product("123", "Product1product1", "dProduct1product1ProdProduct1product1ProdProduct1product1ProdProduct1product1ProdProduct1product1Product1product1escriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription", "category1", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 20000, 20, 5,true,false, date1);
-        Product p2 = new Product("456", "Product3", "description", "category1", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 40, 20, 5,true,true, date1);
-        Product p3 = new Product("789", "Product4", "description", "category1", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 50, 20, 5,true,true, date1);
-        Product p1 = new Product("234", "Product2", "description", "category1", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 30, 20, 5,false,true, date1);
-        Product p4 = new Product("101", "Product5", "description", "category3", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 60, 20, 5,true,false, date1);
-        Product p5 = new Product("102", "Product6", "description", "category1", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 60, 20, 5,true,false, date1);
-        Product p6 = new Product("103", "Product7", "description", "category1", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 60, 20, 5,true,false, date1);
-        Product p7 = new Product("104", "Product8", "description", "category3", "https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg", "NOMAN", 60, 20, 5,true,false, date1);
-
-        Product.productList.add(p);
-        Product.productList.add(p1);
-        Product.productList.add(p2);
-        Product.productList.add(p3);
-        Product.productList.add(p4);
-        Product.productList.add(p5);
-        Product.productList.add(p6);
-        Product.productList.add(p7);
-        PageAdapter pageAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
-        pager.setAdapter(pageAdapter);
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        String url="https://iqbalelectronicswebapi.azurewebsites.net/api/products";
+        StringRequest request=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                pager.setCurrentItem(tab.getPosition());
-                pageAdapter.notifyDataSetChanged();
+            public void onResponse(String response1) {
+                try {
+                    JSONArray arr=new JSONArray(response1);
+                    for(int i=0;i<arr.length();i++)
+                    {
+                        JSONObject obj=arr.getJSONObject(i);
+                        String id=obj.getString("id");
+                        String title=obj.getString("title");
+                        String description=obj.getString("description");
+                        String image=getString(R.string.Cloudinary)+obj.getString("image");
+                        String createdBy=obj.getString("createdBy");
+                        int minimumInstallment=obj.getInt("minimumInstallments");
+                        boolean daily=obj.getBoolean("daily");
+                        boolean monthly=obj.getBoolean("monthly");
+                        double price=obj.getDouble("price");
+                        double percentage=obj.getDouble("percentage");
+                        //Category
+                        JSONObject obj1=obj.getJSONObject("category");
+                        String category=obj1.getString("description");
+
+                        Product p=new Product(id,title,description,category,image,createdBy,price,percentage,minimumInstallment,daily,monthly);
+                        Product.productList.add(p);
+                    }
+                    PageAdapter pageAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+                    pager.setAdapter(pageAdapter);
+                    tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                        @Override
+                        public void onTabSelected(TabLayout.Tab tab) {
+                            pager.setCurrentItem(tab.getPosition());
+                            pageAdapter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onTabUnselected(TabLayout.Tab tab) {
+
+                        }
+
+                        @Override
+                        public void onTabReselected(TabLayout.Tab tab) {
+
+                        }
+                    });
+                    pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
-
+        }, new com.android.volley.Response.ErrorListener() {
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "Temporary Error While Connecting to server", Toast.LENGTH_SHORT).show();
             }
         });
-        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-
+        RequestQueue queue= Volley.newRequestQueue(requireContext());
+        queue.add(request);
     }
 
+    //ADD TABS TO TABLAYOUT
     private void addTabs() {
 
-        for (int i = 0; i < categories.length; i++) {
-            tabLayout.addTab(tabLayout.newTab().setText(categories[i]));
+        for (int i = 0; i < categories.size(); i++) {
+            tabLayout.addTab(tabLayout.newTab().setText(categories.get(i)));
         }
         tabLayout.setTabMode(MODE_SCROLLABLE);
+        createProducts();
     }
 
+    //GET CATEGORIES FROM SERVER
+    public void loadCategories()
+    {
+        categories=new ArrayList<>();
+        String url="https://iqbalelectronicswebapi.azurewebsites.net/api/categories";
+        StringRequest request=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response1) {
+                try {
+                    JSONArray arr=new JSONArray(response1);
+                    for(int i=0;i<arr.length();i++)
+                    {
+                        JSONObject obj=arr.getJSONObject(i);
+                        categories.add(obj.getString("description"));
+                    }
+                    addTabs();
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "Temporary Error While Connecting to server", Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue queue= Volley.newRequestQueue(requireContext());
+        queue.add(request);
+    }
 
 
 }

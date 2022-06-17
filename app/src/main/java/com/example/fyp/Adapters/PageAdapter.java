@@ -21,7 +21,7 @@ public class PageAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return new CategoriesFragment(HomeFragment.categories[position]);
+        return new CategoriesFragment(HomeFragment.categories.get(position));
     }
 
     @Override

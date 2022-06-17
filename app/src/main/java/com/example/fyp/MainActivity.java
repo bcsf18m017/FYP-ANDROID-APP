@@ -9,8 +9,18 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.fyp.Entities.User;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -51,20 +61,61 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (Paper.book().contains("phone")) {
-                    String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-                    @SuppressLint("SimpleDateFormat") SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-                    Date date1 = null;
-                    try {
-                        date1 = f.parse(date);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    User u = new User("1", "NOMAN TAHIR", "H#7,St#15 Ramgarh Main Bazaar Mughalpura Lahore", "03024677533", "3520126349331", R.drawable.user, 130000.0, "123", date1, "NOMI");
-                    User.user = u;
-                    Intent intent = new Intent(MainActivity.this, MainPage.class);
-                    intent.putExtra("Caller", "Home");
-                    startActivity(intent);
-                    finish();
+                    String url="https://iqbalelectronicswebapi.azurewebsites.net/api/person";
+                    String temp=Paper.book().read("phone");
+                    temp=Paper.book().read("id");
+
+                    url+="/"+temp;
+                    StringRequest request=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response1) {
+                            try {
+                                JSONObject obj = new JSONObject(response1);
+                                String id = obj.getString("id");
+                                String name = obj.getString("name");
+                                String address = obj.getString("address");
+                                String phone = obj.getString("email");
+                                String cnic = obj.getString("cnic");
+                                String image = getString(R.string.Cloudinary)+obj.getString("image");
+                                String temp=obj.getString("salary");
+                                double salary;
+                                if(temp.equals("null"))
+                                {
+                                    salary=0;
+                                }
+                                else
+                                {
+                                    salary= Double.parseDouble(temp);
+                                }
+                                String pwd =Paper.book().read("password");
+                                String createdBy = obj.getString("creatorId");
+                                String date=obj.getString("createdOn").split("T")[0];
+                                Date createdOn =new SimpleDateFormat("yyyy-mm-dd").parse(date);;
+
+                                Paper.book().write("phone", phone);
+                                Paper.book().write("password", pwd);
+                                Paper.book().write("id", id);
+                                User u = new User(id, name, address, phone, cnic, image, salary, pwd, createdOn, createdBy);
+                                User.user = u;
+
+                                JSONArray arr=obj.getJSONArray("orders");
+                                JSONArray arr1=obj.getJSONArray("transactionHistories");
+                                Intent intent = new Intent(MainActivity.this, MainPage.class);
+                                intent.putExtra("Caller", "Home");
+                                startActivity(intent);
+                                finish();
+                            } catch (JSONException | ParseException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new com.android.volley.Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(MainActivity.this, "Temporary Error While Connecting to server", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    RequestQueue queue= Volley.newRequestQueue(MainActivity.this);
+                    queue.add(request);
                 } else {
                     Intent intent = new Intent(MainActivity.this, Login.class);
                     startActivity(intent);

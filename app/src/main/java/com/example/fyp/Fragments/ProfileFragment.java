@@ -60,7 +60,7 @@ public class ProfileFragment extends Fragment {
         r2=view.findViewById(R.id.views_container2);
         image=view.findViewById(R.id.user_image_profile);
 
-        Picasso.get().load("https://res.cloudinary.com/nomancloudinary/image/upload/v1654599479/z4eezx4pmi0i0sjaorkd.jpg").into(image);
+        Picasso.get().load(User.user.getImage_id()).into(image);
 
 
         name=view.findViewById(R.id.name_change_field);

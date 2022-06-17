@@ -79,7 +79,7 @@ public class CartDB extends SQLiteOpenHelper {
 
     public boolean isRecord(String p_id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String Query = "Select * from " + TABLE + " where " + PRODUCT_ID + " = " + p_id;
+        String Query = "Select * from " + TABLE + " where " + PRODUCT_ID + " = '" + p_id+"'";
         Cursor cursor = db.rawQuery(Query, null);
         if (cursor.getCount() <= 0) {
             cursor.close();
