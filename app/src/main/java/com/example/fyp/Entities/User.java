@@ -10,13 +10,13 @@ public class User implements Serializable {
     String id, name, address, phone, cnic, password, createdBy;
     Double salary;
     String image_id;
-    Date createdOn;
+    String createdOn;
     List<Order> orderList;
     List<TransactionHistories>transactionHistories;
 
     public static User user;
 
-    public User(String id, String name, String address, String phone, String cnic, String image_id, Double salary, String password, Date createdOn, String createdBy) {
+    public User(String id, String name, String address, String phone, String cnic, String image_id, Double salary, String password, String createdOn, String createdBy) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -85,11 +85,11 @@ public class User implements Serializable {
         this.salary = salary;
     }
 
-    public Date getCreatedOn() {
+    public String getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(Date createdOn) {
+    public void setCreatedOn(String createdOn) {
         this.createdOn = createdOn;
     }
 

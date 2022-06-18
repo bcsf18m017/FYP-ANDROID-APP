@@ -43,9 +43,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyOrderHolde
     @Override
     public void onBindViewHolder(@NonNull MyOrderHolder holder, int position) {
         holder.data=orderList.get(position);
-        SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MMM/yyyy");
-        String dateOnly = dateFormat.format(holder.data.getDueDate());
-        holder.date.setText(dateOnly);
+        String date=holder.data.getDueDate().split("T")[0];
+        holder.date.setText(date);
         holder.total.setText(Integer.toString(holder.data.getTotalBill()));
         holder.due.setText(Integer.toString(holder.data.getBillDue()));
 

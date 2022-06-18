@@ -56,8 +56,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyCartHolder> 
             holder.quantity.setText(Integer.toString(db.getItemByID(p.getProduct_ID()).getQuantity()));
             double dailyAmount=(holder.data.getQuantity() * (p.getPrice()+((p.getPrice()*p.getPercentage())/100))/p.getMinimumInstallments())/30;
             double monthlyAmount=(holder.data.getQuantity() * (p.getPrice()+((p.getPrice()*p.getPercentage())/100))/p.getMinimumInstallments());
-            holder.daily.setText(Double.toString(dailyAmount));
-            holder.monthly.setText(Double.toString(monthlyAmount));
+            holder.daily.setText(Integer.toString((int)(dailyAmount)));
+            holder.monthly.setText(Integer.toString((int)(monthlyAmount)));
             RadioButton daily=(RadioButton)holder.itemView.findViewById(R.id.radioDaily);
             RadioButton monthly=(RadioButton)holder.itemView.findViewById(R.id.radioMonthly);
 
@@ -131,8 +131,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyCartHolder> 
                         holder.quantity.setText(Integer.toString(qty + 1));
                         qty++;
                         holder.total.setText((Double.toString(qty * (p.getPrice()+((p.getPrice()*p.getPercentage())/100)))));
-                        holder.daily.setText((Double.toString((qty * (p.getPrice()+((p.getPrice()*p.getPercentage())/100))/p.getMinimumInstallments())/30)));
-                        holder.monthly.setText((Double.toString(qty * (p.getPrice()+((p.getPrice()*p.getPercentage())/100))/p.getMinimumInstallments())));
+                        holder.daily.setText((Integer.toString((int)(qty * (p.getPrice()+((p.getPrice()*p.getPercentage())/100))/p.getMinimumInstallments())/30)));
+                        holder.monthly.setText((Integer.toString((int)(qty * (p.getPrice()+((p.getPrice()*p.getPercentage())/100))/p.getMinimumInstallments()))));
                         db.updateRecordById(p.getProduct_ID(), qty);
                     } else {
                         Toast.makeText(view.getContext(), "Maximum Limit reached", Toast.LENGTH_SHORT).show();
@@ -147,8 +147,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyCartHolder> 
                         holder.quantity.setText(Integer.toString(qty - 1));
                         qty--;
                         holder.total.setText(Double.toString(qty * (p.getPrice()+((p.getPrice()*p.getPercentage())/100))));
-                        holder.daily.setText((Double.toString((qty * (p.getPrice()+((p.getPrice()*p.getPercentage())/100))/p.getMinimumInstallments())/30)));
-                        holder.monthly.setText((Double.toString(qty * (p.getPrice()+((p.getPrice()*p.getPercentage())/100))/p.getMinimumInstallments())));
+                        holder.daily.setText((Integer.toString((int)(qty * (p.getPrice()+((p.getPrice()*p.getPercentage())/100))/p.getMinimumInstallments())/30)));
+                        holder.monthly.setText((Integer.toString((int)(qty * (p.getPrice()+((p.getPrice()*p.getPercentage())/100))/p.getMinimumInstallments()))));
                         db.updateRecordById(p.getProduct_ID(), qty);
                     } else {
                         Toast.makeText(view.getContext(), "Minimum Limit Reached", Toast.LENGTH_SHORT).show();
@@ -170,12 +170,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyCartHolder> 
     @Override
     public int getItemCount() {
         return cartList.size();
-    }
-
-    private int getSavedMethodIndex(String pid) {
-        CartDB cartDb = new CartDB(myContext.getApplicationContext());
-        Cart c = cartDb.getItemByID(pid);
-        return c.getPayment_method().equals("Installment") ? 2 : 1;
     }
 
     public class MyCartHolder extends RecyclerView.ViewHolder {

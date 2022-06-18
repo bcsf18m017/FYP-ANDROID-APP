@@ -62,6 +62,7 @@ public class HomeFragment extends Fragment {
     TabLayout tabLayout;
     public static List<String>categories;
     ViewPager pager;
+    private static boolean flag=true;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -83,67 +84,90 @@ public class HomeFragment extends Fragment {
     //GET PRODUCTS FROM SERVER
     private void createProducts()
     {
-        String url="https://iqbalelectronicswebapi.azurewebsites.net/api/products";
-        StringRequest request=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
-            @Override
-            public void onResponse(String response1) {
-                try {
-                    JSONArray arr=new JSONArray(response1);
-                    for(int i=0;i<arr.length();i++)
-                    {
-                        JSONObject obj=arr.getJSONObject(i);
-                        String id=obj.getString("id");
-                        String title=obj.getString("title");
-                        String description=obj.getString("description");
-                        String image=getString(R.string.Cloudinary)+obj.getString("image");
-                        String createdBy=obj.getString("createdBy");
-                        int minimumInstallment=obj.getInt("minimumInstallments");
-                        boolean daily=obj.getBoolean("daily");
-                        boolean monthly=obj.getBoolean("monthly");
-                        double price=obj.getDouble("price");
-                        double percentage=obj.getDouble("percentage");
-                        //Category
-                        JSONObject obj1=obj.getJSONObject("category");
-                        String category=obj1.getString("description");
+        if(flag)
+        {
+            String url="https://iqbalelectronicswebapi.azurewebsites.net/api/products";
+            StringRequest request=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
+                @Override
+                public void onResponse(String response1) {
+                    try {
+                        JSONArray arr=new JSONArray(response1);
+                        for(int i=0;i<arr.length();i++)
+                        {
+                            JSONObject obj=arr.getJSONObject(i);
+                            String id=obj.getString("id");
+                            String title=obj.getString("title");
+                            String description=obj.getString("description");
+                            String image=getString(R.string.Cloudinary)+obj.getString("image");
+                            String createdBy=obj.getString("createdBy");
+                            int minimumInstallment=obj.getInt("minimumInstallments");
+                            boolean daily=obj.getBoolean("daily");
+                            boolean monthly=obj.getBoolean("monthly");
+                            double price=obj.getDouble("price");
+                            double percentage=obj.getDouble("percentage");
+                            //Category
+                            JSONObject obj1=obj.getJSONObject("category");
+                            String category=obj1.getString("description");
 
-                        Product p=new Product(id,title,description,category,image,createdBy,price,percentage,minimumInstallment,daily,monthly);
-                        Product.productList.add(p);
+                            Product p=new Product(id,title,description,category,image,createdBy,price,percentage,minimumInstallment,daily,monthly);
+                            Product.productList.add(p);
+                        }
+                        PageAdapter pageAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+                        pager.setAdapter(pageAdapter);
+                        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                            @Override
+                            public void onTabSelected(TabLayout.Tab tab) {
+                                pager.setCurrentItem(tab.getPosition());
+                                pageAdapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onTabUnselected(TabLayout.Tab tab) {
+
+                            }
+
+                            @Override
+                            public void onTabReselected(TabLayout.Tab tab) {
+
+                            }
+                        });
+                        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+                        flag=false;
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                    PageAdapter pageAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
-                    pager.setAdapter(pageAdapter);
-                    tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                        @Override
-                        public void onTabSelected(TabLayout.Tab tab) {
-                            pager.setCurrentItem(tab.getPosition());
-                            pageAdapter.notifyDataSetChanged();
-                        }
-
-                        @Override
-                        public void onTabUnselected(TabLayout.Tab tab) {
-
-                        }
-
-                        @Override
-                        public void onTabReselected(TabLayout.Tab tab) {
-
-                        }
-                    });
-                    pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
                 }
-            }
-        }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Temporary Error While Connecting to server", Toast.LENGTH_SHORT).show();
-            }
-        });
-        RequestQueue queue= Volley.newRequestQueue(requireContext());
-        queue.add(request);
+            }, new com.android.volley.Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getContext(), "Temporary Error While Connecting to server", Toast.LENGTH_SHORT).show();
+                }
+            });
+            RequestQueue queue= Volley.newRequestQueue(requireContext());
+            queue.add(request);
+        }
+        else {
+            PageAdapter pageAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+            pager.setAdapter(pageAdapter);
+            tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    pager.setCurrentItem(tab.getPosition());
+                    pageAdapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+
+                }
+            });
+            pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        }
     }
 
     //ADD TABS TO TABLAYOUT
@@ -159,32 +183,38 @@ public class HomeFragment extends Fragment {
     //GET CATEGORIES FROM SERVER
     public void loadCategories()
     {
-        categories=new ArrayList<>();
-        String url="https://iqbalelectronicswebapi.azurewebsites.net/api/categories";
-        StringRequest request=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
-            @Override
-            public void onResponse(String response1) {
-                try {
-                    JSONArray arr=new JSONArray(response1);
-                    for(int i=0;i<arr.length();i++)
-                    {
-                        JSONObject obj=arr.getJSONObject(i);
-                        categories.add(obj.getString("description"));
-                    }
-                    addTabs();
+       if(flag)
+       {
+           categories=new ArrayList<>();
+           String url="https://iqbalelectronicswebapi.azurewebsites.net/api/categories";
+           StringRequest request=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
+               @Override
+               public void onResponse(String response1) {
+                   try {
+                       JSONArray arr=new JSONArray(response1);
+                       for(int i=0;i<arr.length();i++)
+                       {
+                           JSONObject obj=arr.getJSONObject(i);
+                           categories.add(obj.getString("description"));
+                       }
+                       addTabs();
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Temporary Error While Connecting to server", Toast.LENGTH_SHORT).show();
-            }
-        });
-        RequestQueue queue= Volley.newRequestQueue(requireContext());
-        queue.add(request);
+                   } catch (JSONException e) {
+                       e.printStackTrace();
+                   }
+               }
+           }, new com.android.volley.Response.ErrorListener() {
+               @Override
+               public void onErrorResponse(VolleyError error) {
+                   Toast.makeText(getContext(), "Temporary Error While Connecting to server", Toast.LENGTH_SHORT).show();
+               }
+           });
+           RequestQueue queue= Volley.newRequestQueue(requireContext());
+           queue.add(request);
+       }
+       else {
+           addTabs();
+       }
     }
 
 

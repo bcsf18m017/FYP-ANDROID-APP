@@ -90,12 +90,11 @@ public class MainActivity extends AppCompatActivity {
                                 String pwd =Paper.book().read("password");
                                 String createdBy = obj.getString("creatorId");
                                 String date=obj.getString("createdOn").split("T")[0];
-                                Date createdOn =new SimpleDateFormat("yyyy-mm-dd").parse(date);;
 
                                 Paper.book().write("phone", phone);
                                 Paper.book().write("password", pwd);
                                 Paper.book().write("id", id);
-                                User u = new User(id, name, address, phone, cnic, image, salary, pwd, createdOn, createdBy);
+                                User u = new User(id, name, address, phone, cnic, image, salary, pwd, date, createdBy);
                                 User.user = u;
 
                                 JSONArray arr=obj.getJSONArray("orders");
@@ -104,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                                 intent.putExtra("Caller", "Home");
                                 startActivity(intent);
                                 finish();
-                            } catch (JSONException | ParseException e) {
+                            } catch (JSONException  e) {
                                 e.printStackTrace();
                             }
                         }

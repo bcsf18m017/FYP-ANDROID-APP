@@ -11,4 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="No Order Available"
+        android:textSize="30dp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/average_sans"
+        android:visibility="gone"
+        android:id="@+id/activeOrderText"/>
 </RelativeLayout>

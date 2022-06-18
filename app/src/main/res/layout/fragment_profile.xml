@@ -13,17 +13,17 @@
         >
 
         <View
+            android:id="@+id/profile_upper_view"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:background="@color/orange"
-            android:id="@+id/profile_upper_view"/>
+            android:layout_height="90dp"
+            android:background="@color/orange" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/user_image_profile"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="25dp"
             app:civ_border_color="#f6f6f6"
             app:civ_border_width="3dp" />
 
@@ -37,13 +37,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="8dp"
                 android:text="Name"
                 android:textColor="#707070"
-                android:textSize="13dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="15dp"
-                />
+                android:textSize="13dp" />
 
             <TextView
                 android:id="@+id/user_name_profile"
@@ -51,10 +50,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="40dp"
-                android:gravity="center"
-                android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/ic_baseline_supervised_user_circle_24"
+                android:drawablePadding="10dp"
                 android:drawableTint="@color/orange"
+                android:gravity="center"
                 android:text="Noman Tahir"
                 android:textColor="@color/black"
                 android:textSize="23dp"
@@ -86,10 +85,10 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="40dp"
                 android:drawableLeft="@drawable/login_phone"
-                android:text="+923024677532"
-                android:textColor="@color/black"
                 android:drawablePadding="10dp"
                 android:drawableTint="@color/orange"
+                android:text="+923024677532"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -153,10 +152,10 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="50dp"
                 android:drawableLeft="@drawable/address"
+                android:drawablePadding="10dp"
                 android:drawableTint="@color/orange"
                 android:text="H#7,St#15,Ramgarh Main Bazaar Mughalpura,Lahore"
                 android:textColor="@color/black"
-                android:drawablePadding="10dp"
                 android:textSize="17dp"
                 android:textStyle="italic" />
 
@@ -242,6 +241,7 @@
                 android:drawableTint="@color/black"
                 android:inputType="text"
                 android:drawableRight="@drawable/name"
+                android:maxLength="18"
                 android:padding="10dp" />
 
             <View
@@ -276,6 +276,7 @@
                 android:inputType="text"
                 android:id="@+id/phone_change_field"
                 android:drawableRight="@drawable/login_phone"
+                android:maxLength="11"
                 android:drawableTint="@color/black" />
 
             <TextView
@@ -296,7 +297,7 @@
                 android:layout_below="@id/phone_change_field"
                 android:background="@drawable/password_background"
                 android:padding="10dp"
-                android:inputType="number"
+                android:inputType="textMultiLine"
                 android:id="@+id/address_change_field"
                 android:drawableRight="@drawable/address"
                 android:drawableTint="@color/black" />

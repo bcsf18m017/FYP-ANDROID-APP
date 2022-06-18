@@ -31,13 +31,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:text="Daily"
-                android:textSize="20dp"
-                android:textColor="#808080"
                 android:layout_below="@id/order_title"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="30dp"
-                />
+                android:text="Daily Installment Price"
+                android:textColor="#808080"
+                android:textSize="20dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -45,7 +44,7 @@
                 android:layout_below="@id/order_title"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="70dp"
-                android:text="Your Daily Installments Will be 2000"
+                android:text="20000"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:id="@+id/dailyHeading"
@@ -61,13 +60,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:text="Monthly"
-                android:textSize="20dp"
-                android:textColor="#808080"
                 android:layout_below="@id/dailyHeading"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="30dp"
-                />
+                android:text="Monthly Installment Price"
+                android:textColor="#808080"
+                android:textSize="20dp" />
 
             <TextView
                 android:layout_width="match_parent"

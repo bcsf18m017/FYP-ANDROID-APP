@@ -6,10 +6,10 @@ import java.util.Date;
 public class OrderDetails implements Serializable {
     private int orderID,quantity,totalAmount,amountDue,minimumInstallment;
     private String productID;
-    private Date dueDate;
+    private String dueDate;
     private Product product;
 
-    public OrderDetails(int orderID, int quantity, int totalAmount, int amountDue, int minimumInstallment, String productID, Date dueDate) {
+    public OrderDetails(int orderID, int quantity, int totalAmount, int amountDue, int minimumInstallment, String productID, String dueDate) {
         this.orderID = orderID;
         this.quantity = quantity;
         this.totalAmount = totalAmount;
@@ -67,11 +67,11 @@ public class OrderDetails implements Serializable {
         this.productID = productID;
     }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 

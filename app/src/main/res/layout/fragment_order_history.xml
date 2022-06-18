@@ -10,5 +10,17 @@
         android:id="@+id/HistoryOrderRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:id="@+id/historyOrderText"
+        android:text="No Orders Available"/>
 </RelativeLayout>

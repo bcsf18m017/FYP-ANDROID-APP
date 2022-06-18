@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Order implements Serializable {
     private int id,totalBill,billDue;
-    private Date dueDate;
+    private String dueDate;
     private String personID;
     private User person;
     List<OrderDetails>orderDetails;
 
-    public Order(int id, int totalBill, int billDue, Date dueDate, String personID) {
+    public Order(int id, int totalBill, int billDue, String dueDate, String personID) {
         this.id = id;
         this.totalBill = totalBill;
         this.billDue = billDue;
@@ -43,11 +43,11 @@ public class Order implements Serializable {
         this.billDue = billDue;
     }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 

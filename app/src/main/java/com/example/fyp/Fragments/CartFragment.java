@@ -1,8 +1,10 @@
 package com.example.fyp.Fragments;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,16 +57,23 @@ public class CartFragment extends Fragment {
 
 
         confirm.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 CartDB db=new CartDB(getContext());
                 List<Cart> list=db.getAllItems();
-                double daily=0,monthly=0;
+                if(list.size()==0)
+                {
+                    Toast.makeText(getContext(), "No Item in the Cart", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                double daily=0,monthly=0,total=0;
                 for(int i=0;i<list.size();i++)
                 {
                     for (Product p:Product.productList) {
                         if(list.get(i).getProduct_id().equals(p.getProduct_ID())) {
                             double price = (p.getPrice() + ((p.getPercentage() * p.getPrice()) / 100)) * list.get(i).getQuantity();
+                            total+=price;
                             if (list.get(i).getPayment_method().equals("Daily")) {
                                 daily+= price/p.getMinimumInstallments()/30;
                             }
@@ -77,14 +86,12 @@ public class CartFragment extends Fragment {
                     }
                 }
                 ConfirmOrderDialog confirmOrderDialog=new ConfirmOrderDialog();
-                confirmOrderDialog.showDialog(getContext(),daily,monthly);
+                confirmOrderDialog.showDialog(getContext(),(int)daily,(int)monthly,(int)total);
 
             }
         });
-
         return view;
     }
-
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);

@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,13 +19,13 @@
             android:orientation="horizontal">
 
             <RelativeLayout
-                android:layout_width="50dp"
-                android:layout_height="150dp">
+                android:layout_width="110dp"
+                android:layout_height="200dp">
 
-                <ImageView
-                    android:id="@+id/orderImage"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/orderDetailImage"
+                    android:layout_width="110dp"
+                    android:layout_height="100dp"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="20dp"
                     android:src="@drawable/order" />
@@ -35,14 +36,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:paddingHorizontal="10dp">
+
                 <TextView
-                    android:id="@+id/orderDateHeading"
+                    android:id="@+id/orderDetailDateHeading"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/average_sans"
-                    android:text="Order Date"
+                    android:text="Due Date"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -50,13 +52,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#e0e0e0"
-                    android:layout_below="@id/orderDate"
+                    android:layout_below="@id/orderDetailDate"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginTop="5dp"/>
 
                 <TextView
-                    android:id="@+id/orderDate"
+                    android:id="@+id/orderDetailDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -70,7 +72,7 @@
 
 
                 <TextView
-                    android:id="@+id/totalBillHeading"
+                    android:id="@+id/orderDetailTotalHeading"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="24dp"
@@ -81,7 +83,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/totalBill"
+                    android:id="@+id/orderDetailTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -95,13 +97,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#e0e0e0"
-                    android:layout_below="@id/totalBill"
+                    android:layout_below="@id/orderDetailTotal"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginTop="5dp"/>
 
                 <TextView
-                    android:id="@+id/billLeftHeading"
+                    android:id="@+id/orderDetailbillLeftHeading"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="24dp"
@@ -110,7 +112,7 @@
                     android:textColor="@color/black"
                     android:textSize="18sp" />
                 <TextView
-                    android:id="@+id/billLeft"
+                    android:id="@+id/orderDetailbillLeft"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="24dp"
@@ -124,27 +126,39 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#e0e0e0"
-                    android:layout_below="@id/billLeft"
+                    android:layout_below="@id/orderDetailbillLeft"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginTop="5dp"/>
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/orderDetailsButton"
+                <TextView
+                    android:id="@+id/orderDetailInstallmentHeading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="160dp"
+                    android:text="Installments Left"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/orderDetailInstallment"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="160dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/button_shape"
-                    android:paddingHorizontal="30dp"
-                    android:text="View Details"
-                    android:textColor="#414141" />
+                    android:text="20"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0"
+                    android:layout_below="@id/orderDetailInstallment"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="5dp"/>
             </RelativeLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 </RelativeLayout>
