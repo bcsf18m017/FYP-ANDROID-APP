@@ -3,6 +3,7 @@ package com.example.fyp.Entities;
 import org.json.JSONArray;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class User implements Serializable {
         this.createdOn = createdOn;
         this.createdBy = createdBy;
         this.password = password;
+        transactionHistories=new ArrayList<>();
     }
 
     public String getId() {

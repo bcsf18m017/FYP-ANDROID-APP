@@ -23,6 +23,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.fyp.Api.ApiInterface;
 import com.example.fyp.Api.RetrofitClient;
+import com.example.fyp.Entities.TransactionHistories;
 import com.example.fyp.Entities.User;
 
 import org.json.JSONArray;
@@ -31,7 +32,9 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import io.paperdb.Paper;
@@ -116,8 +119,6 @@ public class Login extends AppCompatActivity {
                                             User u = new User(id, name, address, phone, cnic, image, salary, pwd, date, createdBy);
                                             User.user = u;
 
-                                            JSONArray arr=obj.getJSONArray("orders");
-                                            JSONArray arr1=obj.getJSONArray("transactionHistories");
 
                                             Intent intent = new Intent(Login.this, MainPage.class);
                                             intent.putExtra("Caller", "Home");

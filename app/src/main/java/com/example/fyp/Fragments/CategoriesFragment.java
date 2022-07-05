@@ -49,11 +49,13 @@ public class CategoriesFragment extends Fragment implements Serializable {
         recyclerView.setLayoutManager(layoutManager);
 
         List<Product> list = new ArrayList<>();
-        for (Product p : Product.productList) {
-            if (p.getCategory().equals(category)) {
-                list.add(p);
+       if(Product.productList!=null)
+        {
+            for (Product p : Product.productList) {
+                if (p.getCategory().equals(category)) {
+                    list.add(p);
+                }
             }
-
         }
         adapter = new ProductAdapter(view.getContext(), list, new ProductAdapter.ItemClickListener() {
             @Override

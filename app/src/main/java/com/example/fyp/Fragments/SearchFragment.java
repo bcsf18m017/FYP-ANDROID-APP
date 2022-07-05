@@ -50,6 +50,7 @@ public class SearchFragment extends Fragment {
         searchbar = view.findViewById(R.id.searcBar);
 
 
+        searchbar.setCursorVisible(true);
         searchbar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {

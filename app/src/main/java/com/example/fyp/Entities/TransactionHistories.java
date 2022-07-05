@@ -5,10 +5,10 @@ import java.util.Date;
 public class TransactionHistories {
     private String id,orderDetailID,personId;
     private int amountReceied;
-    private Date createdOn;
+    private String  createdOn;
     private OrderDetails orderDetails;
 
-    public TransactionHistories(String id, String orderDetailID, int amountReceied,String personId, Date createdOn) {
+    public TransactionHistories(String id, String orderDetailID, int amountReceied,String personId, String createdOn) {
         this.id = id;
         this.orderDetailID = orderDetailID;
         this.amountReceied = amountReceied;
@@ -40,11 +40,11 @@ public class TransactionHistories {
         this.amountReceied = amountReceied;
     }
 
-    public Date getCreatedOn() {
+    public String getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(Date createdOn) {
+    public void setCreatedOn(String createdOn) {
         this.createdOn = createdOn;
     }
 

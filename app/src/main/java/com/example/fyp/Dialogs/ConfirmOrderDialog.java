@@ -121,6 +121,7 @@ public class ConfirmOrderDialog {
         List<Cart>list=db.getAllItems();
         int[] installments=new int[list.size()];
         int[]prices=new int[list.size()];
+        int[]percentages=new int[list.size()];
         for(int i=0;i<list.size();i++)
         {
             for(int j=0;j< Product.productList.size();j++)
@@ -129,13 +130,15 @@ public class ConfirmOrderDialog {
                 {
                     installments[i]=Product.productList.get(j).getMinimumInstallments();
                     prices[i]=(int)Product.productList.get(j).getPrice();
+                    percentages[i]=(int)Product.productList.get(j).getPercentage();
                 }
             }
         }
 
         int i=0;
         for(Cart c:list) {
-            OrderDetailsRequest request=new OrderDetailsRequest(order.getOrderId(),c.getProduct_id(),dueDates[i], c.getQuantity(),prices[i]*c.getQuantity(),prices[i]*c.getQuantity(),installments[i]);
+            int odTotal=(prices[i]+((prices[i]*percentages[i])/100))*c.getQuantity();
+            OrderDetailsRequest request=new OrderDetailsRequest(order.getOrderId(),c.getProduct_id(),dueDates[i], c.getQuantity(),odTotal,odTotal,installments[i]);
             i++;
             Call<OrderDetails> call=apiInterface.postOrderDetail(request);
             int finalI = i;

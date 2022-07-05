@@ -25,7 +25,7 @@ import java.io.Serializable;
 public class ProductDetails extends AppCompatActivity implements Serializable {
 
     ImageView productImage;
-    TextView name, price, description, category;
+    TextView name, price, description, category,daily,monthly;
     Button addToCart;
     String caller;
 
@@ -45,6 +45,8 @@ public class ProductDetails extends AppCompatActivity implements Serializable {
         price = findViewById(R.id.product_detail_price);
         addToCart = findViewById(R.id.add_to_cart);
         category = findViewById(R.id.product_detail_category);
+        daily=findViewById(R.id.product_detail_daily);
+        monthly=findViewById(R.id.product_detail_monthly);
 
 
         name.setText(product.getTitle());
@@ -53,6 +55,18 @@ public class ProductDetails extends AppCompatActivity implements Serializable {
         price.setText(Double.toString(product.getPrice()+((product.getPercentage()*product.getPrice())/100)));
         category.setText(product.getCategory());
 
+
+        int price=(int)((product.getPrice()+((product.getPrice()*product.getPercentage())/100))/product.getMinimumInstallments());
+        monthly.setText(Integer.toString(price));
+
+        if(product.isDaily())
+        {
+            daily.setText(Integer.toString(price/30));
+        }
+        else
+        {
+            daily.setText("N/A");
+        }
 
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override

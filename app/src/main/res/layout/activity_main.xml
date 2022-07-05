@@ -16,13 +16,13 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/splash_logo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="-50dp"
                 android:layout_marginTop="250dp"
-                android:src="@drawable/ie_main"
-                android:id="@+id/splash_logo" />
+                android:src="@drawable/image" />
 
         </RelativeLayout>
     </ScrollView>

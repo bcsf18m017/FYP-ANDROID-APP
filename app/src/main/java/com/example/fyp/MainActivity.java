@@ -16,6 +16,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.fyp.Entities.TransactionHistories;
 import com.example.fyp.Entities.User;
 
 import org.json.JSONArray;
@@ -24,7 +25,9 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -97,8 +100,6 @@ public class MainActivity extends AppCompatActivity {
                                 User u = new User(id, name, address, phone, cnic, image, salary, pwd, date, createdBy);
                                 User.user = u;
 
-                                JSONArray arr=obj.getJSONArray("orders");
-                                JSONArray arr1=obj.getJSONArray("transactionHistories");
                                 Intent intent = new Intent(MainActivity.this, MainPage.class);
                                 intent.putExtra("Caller", "Home");
                                 startActivity(intent);

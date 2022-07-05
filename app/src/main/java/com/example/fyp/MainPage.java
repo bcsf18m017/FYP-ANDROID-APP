@@ -145,6 +145,9 @@ public class MainPage extends AppCompatActivity implements Serializable {
             case R.id.orders:
                 startActivity(new Intent(MainPage.this,Orders.class));
                 return true;
+            case R.id.transactions:
+                startActivity(new Intent(MainPage.this,TransactionHistory.class));
+                return true;
         }
         return false;
     }

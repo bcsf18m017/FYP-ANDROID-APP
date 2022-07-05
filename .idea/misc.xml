@@ -16,16 +16,19 @@
         <entry key="..\:/Codes/FYP-ANDROID-APP/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/bottom_nav_color.xml" value="0.2203125" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/button_shape_inverted.xml" value="0.2203125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/color_cursor.xml" value="0.1125" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/delete_icon_shape.xml" value="0.2203125" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/image_background.xml" value="0.1925925925925926" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/image_shape.xml" value="0.2203125" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/drawable/password_background.xml" value="0.2203125" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout-v31/activity_product_details.xml" value="0.2929447852760736" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_login.xml" value="0.18297101449275363" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_main.xml" value="0.10326086956521739" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_main_page.xml" value="0.18" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_order_details.xml" value="0.25" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_orders.xml" value="0.33" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_product_details.xml" value="0.33" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/activity_transaction_history.xml" value="0.18" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/cart_item_layout.xml" value="0.5" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/confirm_order_layout.xml" value="0.25" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/dialog_layout.xml" value="0.1" />
@@ -43,6 +46,7 @@
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/order_layout.xml" value="0.4563106796116505" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/password_change_dialog.xml" value="0.33" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/spinner_layout.xml" value="0.33" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/layout/transaction_layout.xml" value="0.33" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/menu/nav_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/FYP/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1125" />
       </map>
